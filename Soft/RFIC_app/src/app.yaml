@@ -1,0 +1,4 @@
+domain_path: /home/yousef/Vivado_workspace/RFIC_SPI/Soft/RFIC_platform/export/RFIC_platform/sw/standalone_microblaze_0
+app_src_dir: /tools/Xilinx/2025.1/Vitis/data/embeddedsw/lib/sw_apps/hello_world
+template: hello_world
+lang: c

@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/yousef/Vivado_workspace/RFIC_SPI/Soft/RFIC_app/build",
+  "command": "/tools/Xilinx/2025.1/Vitis/gnu/microblaze/lin/bin/mb-gcc -isystem /home/yousef/Vivado_workspace/RFIC_SPI/Soft/RFIC_platform/export/RFIC_platform/sw/standalone_microblaze_0/include -isystem /tools/Xilinx/2025.1/gnu/microblaze/lin/x86_64-oesdk-linux/usr/lib/microblaze-xilinx-elf/gcc/microblaze-xilinx-elf/13.3.0/include -isystem /tools/Xilinx/2025.1/gnu/microblaze/lin/x86_64-oesdk-linux/usr/lib/microblaze-xilinx-elf/gcc/microblaze-xilinx-elf/13.3.0/include-fixed -isystem /tools/Xilinx/2025.1/Vitis/gnu/microblaze/lin/microblazeeb-xilinx-elf/usr/include   -mlittle-endian -mxl-soft-mul -mcpu=v11.0 -DSDT  -MMD -MP -specs=/home/yousef/Vivado_workspace/RFIC_SPI/Soft/RFIC_platform/export/RFIC_platform/sw/standalone_microblaze_0/Xilinx.spec -I/home/yousef/Vivado_workspace/RFIC_SPI/Soft/RFIC_platform/export/RFIC_platform/sw/standalone_microblaze_0/include -Wall -Wextra      -O0  -g3     -U__clang__ -o CMakeFiles/RFIC_app.elf.dir/platform.c.obj -c /home/yousef/Vivado_workspace/RFIC_SPI/Soft/RFIC_app/src/platform.c",
+  "file": "/home/yousef/Vivado_workspace/RFIC_SPI/Soft/RFIC_app/src/platform.c"
+},
+{
+  "directory": "/home/yousef/Vivado_workspace/RFIC_SPI/Soft/RFIC_app/build",
+  "command": "/tools/Xilinx/2025.1/Vitis/gnu/microblaze/lin/bin/mb-gcc -isystem /home/yousef/Vivado_workspace/RFIC_SPI/Soft/RFIC_platform/export/RFIC_platform/sw/standalone_microblaze_0/include -isystem /tools/Xilinx/2025.1/gnu/microblaze/lin/x86_64-oesdk-linux/usr/lib/microblaze-xilinx-elf/gcc/microblaze-xilinx-elf/13.3.0/include -isystem /tools/Xilinx/2025.1/gnu/microblaze/lin/x86_64-oesdk-linux/usr/lib/microblaze-xilinx-elf/gcc/microblaze-xilinx-elf/13.3.0/include-fixed -isystem /tools/Xilinx/2025.1/Vitis/gnu/microblaze/lin/microblazeeb-xilinx-elf/usr/include   -mlittle-endian -mxl-soft-mul -mcpu=v11.0 -DSDT  -MMD -MP -specs=/home/yousef/Vivado_workspace/RFIC_SPI/Soft/RFIC_platform/export/RFIC_platform/sw/standalone_microblaze_0/Xilinx.spec -I/home/yousef/Vivado_workspace/RFIC_SPI/Soft/RFIC_platform/export/RFIC_platform/sw/standalone_microblaze_0/include -Wall -Wextra      -O0  -g3     -U__clang__ -o CMakeFiles/RFIC_app.elf.dir/helloworld.c.obj -c /home/yousef/Vivado_workspace/RFIC_SPI/Soft/RFIC_app/src/helloworld.c",
+  "file": "/home/yousef/Vivado_workspace/RFIC_SPI/Soft/RFIC_app/src/helloworld.c"
+}
+]

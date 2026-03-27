@@ -1,0 +1,19 @@
+# Vivado logs
+*.jou
+*.log
+*.str
+*.zip
+
+# Vivado generated folders (safe to ignore)
+*.cache/
+*.runs/
+*.sim/
+*.ip_user_files/
+*.hw/
+
+# NE PAS ignorer .gen complètement (important pour BD)
+# *.gen/ 
+
+# OS
+*~
+.DS_Store
