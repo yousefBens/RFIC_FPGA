@@ -2,11 +2,11 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Fri Mar 27 13:03:31 2026
+// Date        : Wed Apr  1 15:23:30 2026
 // Host        : Yousef-Machine running 64-bit Ubuntu 24.04.4 LTS
 // Command     : write_verilog -force -mode synth_stub
-//               /home/yousef/Vivado_workspace/RFIC_SPI/RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_SPI_Master_AXI_0_19/design_1_SPI_Master_AXI_0_19_stub.v
-// Design      : design_1_SPI_Master_AXI_0_19
+//               /home/yousef/Vivado_workspace/RFIC_SPI/RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_SPI_Master_AXI_0_20/design_1_SPI_Master_AXI_0_20_stub.v
+// Design      : design_1_SPI_Master_AXI_0_20
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a15tcpg236-1
 // --------------------------------------------------------------------------------
@@ -14,8 +14,8 @@
 // This empty module with port declaration file causes synthesis tools to infer a black box for IP.
 // The synthesis directives are for Synopsys Synplify support to prevent IO buffer insertion.
 // Please paste the declaration into a Verilog source file or add the file as an additional source.
-(* CHECK_LICENSE_TYPE = "design_1_SPI_Master_AXI_0_19,SPI_Master_AXI,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "SPI_Master_AXI,Vivado 2025.1" *) 
-module design_1_SPI_Master_AXI_0_19(miso, mosi, sclk, ss_n, s00_axi_aclk, 
+(* CHECK_LICENSE_TYPE = "design_1_SPI_Master_AXI_0_20,SPI_Master_AXI,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "SPI_Master_AXI,Vivado 2025.1" *) 
+module design_1_SPI_Master_AXI_0_20(miso, mosi, sclk, ss_n, s00_axi_aclk, 
   s00_axi_aresetn, s00_axi_awaddr, s00_axi_awprot, s00_axi_awvalid, s00_axi_awready, 
   s00_axi_wdata, s00_axi_wstrb, s00_axi_wvalid, s00_axi_wready, s00_axi_bresp, 
   s00_axi_bvalid, s00_axi_bready, s00_axi_araddr, s00_axi_arprot, s00_axi_arvalid, 

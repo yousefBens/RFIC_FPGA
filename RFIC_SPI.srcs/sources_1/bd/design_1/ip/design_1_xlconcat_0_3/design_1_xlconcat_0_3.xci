@@ -5,7 +5,7 @@
     "cell_name": "xlconcat_0",
     "component_reference": "xilinx.com:ip:xlconcat:2.1",
     "ip_revision": "7",
-    "gen_directory": "../../../../../../RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_xlconcat_0_3",
+    "gen_directory": ".",
     "parameters": {
       "component_parameters": {
         "Component_Name": [ { "value": "design_1_xlconcat_0_3", "resolve_type": "user", "usage": "all" } ],
@@ -288,8 +288,9 @@
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
         "IPREVISION": [ { "value": "7" } ],
+        "LOCKEDBYUSER": [ { "value": "TRUE" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_xlconcat_0_3" } ],
+        "OUTPUTDIR": [ { "value": "." } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
         "SWVERSION": [ { "value": "2025.1" } ],

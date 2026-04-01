@@ -2,10 +2,10 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Tue Mar 24 15:33:42 2026
+-- Date        : Tue Mar 24 15:33:41 2026
 -- Host        : Yousef-Machine running 64-bit Ubuntu 24.04.4 LTS
--- Command     : write_vhdl -force -mode synth_stub
---               /home/yousef/Vivado_workspace/RFIC_SPI/RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_microblaze_0_axi_intc_0/design_1_microblaze_0_axi_intc_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top design_1_microblaze_0_axi_intc_0 -prefix
+--               design_1_microblaze_0_axi_intc_0_ design_1_microblaze_0_axi_intc_0_stub.vhdl
 -- Design      : design_1_microblaze_0_axi_intc_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a15tcpg236-1

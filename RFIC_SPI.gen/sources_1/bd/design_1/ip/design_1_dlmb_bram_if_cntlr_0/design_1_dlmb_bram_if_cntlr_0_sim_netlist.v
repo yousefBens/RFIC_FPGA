@@ -4,8 +4,8 @@
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
 // Date        : Tue Mar 24 15:33:39 2026
 // Host        : Yousef-Machine running 64-bit Ubuntu 24.04.4 LTS
-// Command     : write_verilog -force -mode funcsim
-//               /home/yousef/Vivado_workspace/RFIC_SPI/RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_dlmb_bram_if_cntlr_0/design_1_dlmb_bram_if_cntlr_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top design_1_dlmb_bram_if_cntlr_0 -prefix
+//               design_1_dlmb_bram_if_cntlr_0_ design_1_dlmb_bram_if_cntlr_0_sim_netlist.v
 // Design      : design_1_dlmb_bram_if_cntlr_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -293,7 +293,7 @@ endmodule
 (* C_MASK5 = "64'b0000000000000000000000000000000000000000100000000000000000000000" *) (* C_MASK6 = "64'b0000000000000000000000000000000000000000100000000000000000000000" *) (* C_MASK7 = "64'b0000000000000000000000000000000000000000100000000000000000000000" *) 
 (* C_NUM_LMB = "1" *) (* C_S_AXI_CTRL_ADDR_WIDTH = "32" *) (* C_S_AXI_CTRL_BASEADDR = "32'b11111111111111111111111111111111" *) 
 (* C_S_AXI_CTRL_DATA_WIDTH = "32" *) (* C_S_AXI_CTRL_HIGHADDR = "32'b00000000000000000000000000000000" *) (* C_UE_FAILING_REGISTERS = "0" *) 
-(* C_WRITE_ACCESS = "2" *) (* ORIG_REF_NAME = "lmb_bram_if_cntlr" *) 
+(* C_WRITE_ACCESS = "2" *) 
 module design_1_dlmb_bram_if_cntlr_0_lmb_bram_if_cntlr
    (LMB_Clk,
     LMB_Rst,

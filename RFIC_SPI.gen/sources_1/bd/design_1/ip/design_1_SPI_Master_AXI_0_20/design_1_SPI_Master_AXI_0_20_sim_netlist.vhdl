@@ -2,11 +2,11 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Fri Mar 27 13:03:31 2026
+-- Date        : Wed Apr  1 15:23:30 2026
 -- Host        : Yousef-Machine running 64-bit Ubuntu 24.04.4 LTS
 -- Command     : write_vhdl -force -mode funcsim
---               /home/yousef/Vivado_workspace/RFIC_SPI/RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_SPI_Master_AXI_0_19/design_1_SPI_Master_AXI_0_19_sim_netlist.vhdl
--- Design      : design_1_SPI_Master_AXI_0_19
+--               /home/yousef/Vivado_workspace/RFIC_SPI/RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_SPI_Master_AXI_0_20/design_1_SPI_Master_AXI_0_20_sim_netlist.vhdl
+-- Design      : design_1_SPI_Master_AXI_0_20
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
 -- Device      : xc7a15tcpg236-1
@@ -15,7 +15,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity design_1_SPI_Master_AXI_0_19_SPI_Master is
+entity design_1_SPI_Master_AXI_0_20_SPI_Master is
   port (
     D : out STD_LOGIC_VECTOR ( 1 downto 0 );
     sclk_reg_reg_0 : out STD_LOGIC;
@@ -30,10 +30,10 @@ entity design_1_SPI_Master_AXI_0_19_SPI_Master is
     in9 : in STD_LOGIC_VECTOR ( 58 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_SPI_Master_AXI_0_19_SPI_Master : entity is "SPI_Master";
-end design_1_SPI_Master_AXI_0_19_SPI_Master;
+  attribute ORIG_REF_NAME of design_1_SPI_Master_AXI_0_20_SPI_Master : entity is "SPI_Master";
+end design_1_SPI_Master_AXI_0_20_SPI_Master;
 
-architecture STRUCTURE of design_1_SPI_Master_AXI_0_19_SPI_Master is
+architecture STRUCTURE of design_1_SPI_Master_AXI_0_20_SPI_Master is
   signal \FSM_onehot_state[0]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_onehot_state[1]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_onehot_state[2]_i_1_n_0\ : STD_LOGIC;
@@ -3232,7 +3232,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity design_1_SPI_Master_AXI_0_19_SPI_Master_AXI_slave_lite_v1_0_S00_AXI is
+entity design_1_SPI_Master_AXI_0_20_SPI_Master_AXI_slave_lite_v1_0_S00_AXI is
   port (
     axi_awready_reg_0 : out STD_LOGIC;
     SR : out STD_LOGIC_VECTOR ( 0 to 0 );
@@ -3259,10 +3259,10 @@ entity design_1_SPI_Master_AXI_0_19_SPI_Master_AXI_slave_lite_v1_0_S00_AXI is
     s00_axi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_SPI_Master_AXI_0_19_SPI_Master_AXI_slave_lite_v1_0_S00_AXI : entity is "SPI_Master_AXI_slave_lite_v1_0_S00_AXI";
-end design_1_SPI_Master_AXI_0_19_SPI_Master_AXI_slave_lite_v1_0_S00_AXI;
+  attribute ORIG_REF_NAME of design_1_SPI_Master_AXI_0_20_SPI_Master_AXI_slave_lite_v1_0_S00_AXI : entity is "SPI_Master_AXI_slave_lite_v1_0_S00_AXI";
+end design_1_SPI_Master_AXI_0_20_SPI_Master_AXI_slave_lite_v1_0_S00_AXI;
 
-architecture STRUCTURE of design_1_SPI_Master_AXI_0_19_SPI_Master_AXI_slave_lite_v1_0_S00_AXI is
+architecture STRUCTURE of design_1_SPI_Master_AXI_0_20_SPI_Master_AXI_slave_lite_v1_0_S00_AXI is
   signal \FSM_onehot_state_write[1]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_onehot_state_write[2]_i_1_n_0\ : STD_LOGIC;
   signal \FSM_onehot_state_write_reg_n_0_[1]\ : STD_LOGIC;
@@ -6910,7 +6910,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity design_1_SPI_Master_AXI_0_19_SPI_Master_AXI is
+entity design_1_SPI_Master_AXI_0_20_SPI_Master_AXI is
   port (
     axi_awready_reg : out STD_LOGIC;
     axi_rvalid_reg : out STD_LOGIC;
@@ -6935,10 +6935,10 @@ entity design_1_SPI_Master_AXI_0_19_SPI_Master_AXI is
     s00_axi_bready : in STD_LOGIC
   );
   attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_SPI_Master_AXI_0_19_SPI_Master_AXI : entity is "SPI_Master_AXI";
-end design_1_SPI_Master_AXI_0_19_SPI_Master_AXI;
+  attribute ORIG_REF_NAME of design_1_SPI_Master_AXI_0_20_SPI_Master_AXI : entity is "SPI_Master_AXI";
+end design_1_SPI_Master_AXI_0_20_SPI_Master_AXI;
 
-architecture STRUCTURE of design_1_SPI_Master_AXI_0_19_SPI_Master_AXI is
+architecture STRUCTURE of design_1_SPI_Master_AXI_0_20_SPI_Master_AXI is
   signal busy : STD_LOGIC;
   signal done : STD_LOGIC;
   signal in7 : STD_LOGIC_VECTOR ( 59 downto 1 );
@@ -6948,7 +6948,7 @@ architecture STRUCTURE of design_1_SPI_Master_AXI_0_19_SPI_Master_AXI is
   signal spi_tx_data : STD_LOGIC_VECTOR ( 59 to 59 );
   signal u_spi_master_n_5 : STD_LOGIC;
 begin
-SPI_Master_AXI_slave_lite_v1_0_S00_AXI_inst: entity work.design_1_SPI_Master_AXI_0_19_SPI_Master_AXI_slave_lite_v1_0_S00_AXI
+SPI_Master_AXI_slave_lite_v1_0_S00_AXI_inst: entity work.design_1_SPI_Master_AXI_0_20_SPI_Master_AXI_slave_lite_v1_0_S00_AXI
      port map (
       D(1) => done,
       D(0) => busy,
@@ -6976,7 +6976,7 @@ SPI_Master_AXI_slave_lite_v1_0_S00_AXI_inst: entity work.design_1_SPI_Master_AXI
       \slv_reg5_reg[27]_0\(58 downto 0) => in7(59 downto 1),
       spi_start => spi_start
     );
-u_spi_master: entity work.design_1_SPI_Master_AXI_0_19_SPI_Master
+u_spi_master: entity work.design_1_SPI_Master_AXI_0_20_SPI_Master
      port map (
       D(1) => done,
       D(0) => busy,
@@ -6997,7 +6997,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 library UNISIM;
 use UNISIM.VCOMPONENTS.ALL;
-entity design_1_SPI_Master_AXI_0_19 is
+entity design_1_SPI_Master_AXI_0_20 is
   port (
     miso : in STD_LOGIC;
     mosi : out STD_LOGIC;
@@ -7026,16 +7026,16 @@ entity design_1_SPI_Master_AXI_0_19 is
     s00_axi_rready : in STD_LOGIC
   );
   attribute NotValidForBitStream : boolean;
-  attribute NotValidForBitStream of design_1_SPI_Master_AXI_0_19 : entity is true;
+  attribute NotValidForBitStream of design_1_SPI_Master_AXI_0_20 : entity is true;
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of design_1_SPI_Master_AXI_0_19 : entity is "design_1_SPI_Master_AXI_0_19,SPI_Master_AXI,{}";
+  attribute CHECK_LICENSE_TYPE of design_1_SPI_Master_AXI_0_20 : entity is "design_1_SPI_Master_AXI_0_20,SPI_Master_AXI,{}";
   attribute downgradeipidentifiedwarnings : string;
-  attribute downgradeipidentifiedwarnings of design_1_SPI_Master_AXI_0_19 : entity is "yes";
+  attribute downgradeipidentifiedwarnings of design_1_SPI_Master_AXI_0_20 : entity is "yes";
   attribute x_core_info : string;
-  attribute x_core_info of design_1_SPI_Master_AXI_0_19 : entity is "SPI_Master_AXI,Vivado 2025.1";
-end design_1_SPI_Master_AXI_0_19;
+  attribute x_core_info of design_1_SPI_Master_AXI_0_20 : entity is "SPI_Master_AXI,Vivado 2025.1";
+end design_1_SPI_Master_AXI_0_20;
 
-architecture STRUCTURE of design_1_SPI_Master_AXI_0_19 is
+architecture STRUCTURE of design_1_SPI_Master_AXI_0_20 is
   signal \<const0>\ : STD_LOGIC;
   attribute x_interface_info : string;
   attribute x_interface_info of s00_axi_aclk : signal is "xilinx.com:signal:clock:1.0 S00_AXI_CLK CLK";
@@ -7076,7 +7076,7 @@ GND: unisim.vcomponents.GND
      port map (
       G => \<const0>\
     );
-U0: entity work.design_1_SPI_Master_AXI_0_19_SPI_Master_AXI
+U0: entity work.design_1_SPI_Master_AXI_0_20_SPI_Master_AXI
      port map (
       axi_arready_reg => s00_axi_arready,
       axi_awready_reg => s00_axi_awready,

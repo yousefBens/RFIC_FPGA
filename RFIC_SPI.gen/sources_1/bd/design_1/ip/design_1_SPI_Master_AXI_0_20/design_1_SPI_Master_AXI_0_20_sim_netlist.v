@@ -2,20 +2,20 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Fri Mar 27 13:03:31 2026
+// Date        : Wed Apr  1 15:23:30 2026
 // Host        : Yousef-Machine running 64-bit Ubuntu 24.04.4 LTS
 // Command     : write_verilog -force -mode funcsim
-//               /home/yousef/Vivado_workspace/RFIC_SPI/RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_SPI_Master_AXI_0_19/design_1_SPI_Master_AXI_0_19_sim_netlist.v
-// Design      : design_1_SPI_Master_AXI_0_19
+//               /home/yousef/Vivado_workspace/RFIC_SPI/RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_SPI_Master_AXI_0_20/design_1_SPI_Master_AXI_0_20_sim_netlist.v
+// Design      : design_1_SPI_Master_AXI_0_20
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
 // Device      : xc7a15tcpg236-1
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CHECK_LICENSE_TYPE = "design_1_SPI_Master_AXI_0_19,SPI_Master_AXI,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "SPI_Master_AXI,Vivado 2025.1" *) 
+(* CHECK_LICENSE_TYPE = "design_1_SPI_Master_AXI_0_20,SPI_Master_AXI,{}" *) (* downgradeipidentifiedwarnings = "yes" *) (* x_core_info = "SPI_Master_AXI,Vivado 2025.1" *) 
 (* NotValidForBitStream *)
-module design_1_SPI_Master_AXI_0_19
+module design_1_SPI_Master_AXI_0_20
    (miso,
     mosi,
     sclk,
@@ -96,7 +96,7 @@ module design_1_SPI_Master_AXI_0_19
   assign s00_axi_rresp[0] = \<const0> ;
   GND GND
        (.G(\<const0> ));
-  design_1_SPI_Master_AXI_0_19_SPI_Master_AXI U0
+  design_1_SPI_Master_AXI_0_20_SPI_Master_AXI U0
        (.axi_arready_reg(s00_axi_arready),
         .axi_awready_reg(s00_axi_awready),
         .axi_rvalid_reg(s00_axi_rvalid),
@@ -121,7 +121,7 @@ module design_1_SPI_Master_AXI_0_19
 endmodule
 
 (* ORIG_REF_NAME = "SPI_Master" *) 
-module design_1_SPI_Master_AXI_0_19_SPI_Master
+module design_1_SPI_Master_AXI_0_20_SPI_Master
    (D,
     sclk_reg_reg_0,
     mosi,
@@ -2509,7 +2509,7 @@ module design_1_SPI_Master_AXI_0_19_SPI_Master
 endmodule
 
 (* ORIG_REF_NAME = "SPI_Master_AXI" *) 
-module design_1_SPI_Master_AXI_0_19_SPI_Master_AXI
+module design_1_SPI_Master_AXI_0_20_SPI_Master_AXI
    (axi_awready_reg,
     axi_rvalid_reg,
     axi_arready_reg,
@@ -2583,7 +2583,7 @@ module design_1_SPI_Master_AXI_0_19_SPI_Master_AXI
   wire ss_n;
   wire u_spi_master_n_5;
 
-  design_1_SPI_Master_AXI_0_19_SPI_Master_AXI_slave_lite_v1_0_S00_AXI SPI_Master_AXI_slave_lite_v1_0_S00_AXI_inst
+  design_1_SPI_Master_AXI_0_20_SPI_Master_AXI_slave_lite_v1_0_S00_AXI SPI_Master_AXI_slave_lite_v1_0_S00_AXI_inst
        (.D({done,busy}),
         .Q(spi_tx_data),
         .SR(rst),
@@ -2607,7 +2607,7 @@ module design_1_SPI_Master_AXI_0_19_SPI_Master_AXI
         .s00_axi_wvalid(s00_axi_wvalid),
         .\slv_reg5_reg[27]_0 ({u_spi_master_n_5,in7}),
         .spi_start(spi_start));
-  design_1_SPI_Master_AXI_0_19_SPI_Master u_spi_master
+  design_1_SPI_Master_AXI_0_20_SPI_Master u_spi_master
        (.D({done,busy}),
         .Q(spi_tx_data),
         .SR(rst),
@@ -2622,7 +2622,7 @@ module design_1_SPI_Master_AXI_0_19_SPI_Master_AXI
 endmodule
 
 (* ORIG_REF_NAME = "SPI_Master_AXI_slave_lite_v1_0_S00_AXI" *) 
-module design_1_SPI_Master_AXI_0_19_SPI_Master_AXI_slave_lite_v1_0_S00_AXI
+module design_1_SPI_Master_AXI_0_20_SPI_Master_AXI_slave_lite_v1_0_S00_AXI
    (axi_awready_reg_0,
     SR,
     s00_axi_bvalid,

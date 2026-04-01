@@ -47,13 +47,13 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: user.org:user:SPI_Master_AXI:1.0
--- IP Revision: 5
+-- IP Revision: 29
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
-ENTITY design_1_SPI_Master_AXI_0_19 IS
+ENTITY design_1_SPI_Master_AXI_0_20 IS
   PORT (
     miso : IN STD_LOGIC;
     mosi : OUT STD_LOGIC;
@@ -81,11 +81,11 @@ ENTITY design_1_SPI_Master_AXI_0_19 IS
     s00_axi_rvalid : OUT STD_LOGIC;
     s00_axi_rready : IN STD_LOGIC
   );
-END design_1_SPI_Master_AXI_0_19;
+END design_1_SPI_Master_AXI_0_20;
 
-ARCHITECTURE design_1_SPI_Master_AXI_0_19_arch OF design_1_SPI_Master_AXI_0_19 IS
+ARCHITECTURE design_1_SPI_Master_AXI_0_20_arch OF design_1_SPI_Master_AXI_0_20 IS
   ATTRIBUTE DowngradeIPIdentifiedWarnings : STRING;
-  ATTRIBUTE DowngradeIPIdentifiedWarnings OF design_1_SPI_Master_AXI_0_19_arch: ARCHITECTURE IS "yes";
+  ATTRIBUTE DowngradeIPIdentifiedWarnings OF design_1_SPI_Master_AXI_0_20_arch: ARCHITECTURE IS "yes";
   COMPONENT SPI_Master_AXI IS
     GENERIC (
       C_S00_AXI_DATA_WIDTH : INTEGER;
@@ -183,4 +183,4 @@ BEGIN
       s00_axi_rvalid => s00_axi_rvalid,
       s00_axi_rready => s00_axi_rready
     );
-END design_1_SPI_Master_AXI_0_19_arch;
+END design_1_SPI_Master_AXI_0_20_arch;

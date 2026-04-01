@@ -2,10 +2,10 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Tue Mar 24 15:33:43 2026
+// Date        : Tue Mar 24 15:33:42 2026
 // Host        : Yousef-Machine running 64-bit Ubuntu 24.04.4 LTS
-// Command     : write_verilog -force -mode funcsim
-//               /home/yousef/Vivado_workspace/RFIC_SPI/RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top design_1_clk_wiz_0_0 -prefix
+//               design_1_clk_wiz_0_0_ design_1_clk_wiz_0_0_sim_netlist.v
 // Design      : design_1_clk_wiz_0_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -29,14 +29,14 @@ module design_1_clk_wiz_0_0
   wire locked;
   (* RTL_KEEP = "yes" *) wire reset;
 
-  design_1_clk_wiz_0_0_clk_wiz inst
+  design_1_clk_wiz_0_0_design_1_clk_wiz_0_0_clk_wiz inst
        (.clk_in1(clk_in1),
         .clk_out1(clk_out1),
         .locked(locked),
         .reset(reset));
 endmodule
 
-module design_1_clk_wiz_0_0_clk_wiz
+module design_1_clk_wiz_0_0_design_1_clk_wiz_0_0_clk_wiz
    (clk_out1,
     reset,
     locked,

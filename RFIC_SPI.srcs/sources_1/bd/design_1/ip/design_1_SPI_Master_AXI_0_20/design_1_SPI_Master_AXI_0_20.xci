@@ -1,18 +1,18 @@
 {
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
-    "xci_name": "design_1_SPI_Master_AXI_0_19",
+    "xci_name": "design_1_SPI_Master_AXI_0_20",
     "cell_name": "SPI_Master_AXI_0",
     "component_reference": "user.org:user:SPI_Master_AXI:1.0",
-    "ip_revision": "5",
-    "gen_directory": "../../../../../../RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_SPI_Master_AXI_0_19",
+    "ip_revision": "29",
+    "gen_directory": "../../../../../../RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_SPI_Master_AXI_0_20",
     "parameters": {
       "component_parameters": {
         "C_S00_AXI_DATA_WIDTH": [ { "value": "32", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
         "C_S00_AXI_ADDR_WIDTH": [ { "value": "5", "resolve_type": "user", "format": "long", "enabled": false, "usage": "all" } ],
         "C_S00_AXI_BASEADDR": [ { "value": "0xFFFFFFFF", "resolve_type": "user", "format": "bitString", "enabled": false, "usage": "all" } ],
         "C_S00_AXI_HIGHADDR": [ { "value": "0x00000000", "resolve_type": "user", "format": "bitString", "enabled": false, "usage": "all" } ],
-        "Component_Name": [ { "value": "design_1_SPI_Master_AXI_0_19", "resolve_type": "user", "usage": "all" } ]
+        "Component_Name": [ { "value": "design_1_SPI_Master_AXI_0_20", "resolve_type": "user", "usage": "all" } ]
       },
       "model_parameters": {
         "C_S00_AXI_DATA_WIDTH": [ { "value": "32", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -33,9 +33,9 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "5" } ],
+        "IPREVISION": [ { "value": "29" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_SPI_Master_AXI_0_19" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_SPI_Master_AXI_0_20" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
         "SWVERSION": [ { "value": "2025.1" } ],

@@ -2,7 +2,7 @@
 --Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
---Date        : Fri Mar 27 13:03:07 2026
+--Date        : Wed Apr  1 15:23:07 2026
 --Host        : Yousef-Machine running 64-bit Ubuntu 24.04.4 LTS
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -1425,11 +1425,12 @@ entity design_1 is
     rst : in STD_LOGIC;
     sclk : out STD_LOGIC;
     ss_n : out STD_LOGIC;
+    test_sclk : out STD_LOGIC;
     uart_rxd_out : out STD_LOGIC;
     uart_txd_in : in STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=21,numReposBlks=15,numNonXlnxBlks=1,numHierBlks=6,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=15,da_board_cnt=6,da_clkrst_cnt=2,da_mb_cnt=2,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=22,numReposBlks=16,numNonXlnxBlks=1,numHierBlks=6,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=16,da_board_cnt=6,da_clkrst_cnt=2,da_mb_cnt=2,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of design_1 : entity is "design_1.hwdef";
 end design_1;
@@ -1590,7 +1591,14 @@ architecture STRUCTURE of design_1 is
     sig : out STD_LOGIC
   );
   end component design_1_Btn_led_0_1;
-  component design_1_SPI_Master_AXI_0_19 is
+  component design_1_xlconcat_0_3 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component design_1_xlconcat_0_3;
+  component design_1_SPI_Master_AXI_0_20 is
   port (
     miso : in STD_LOGIC;
     mosi : out STD_LOGIC;
@@ -1618,14 +1626,15 @@ architecture STRUCTURE of design_1 is
     s00_axi_rvalid : out STD_LOGIC;
     s00_axi_rready : in STD_LOGIC
   );
-  end component design_1_SPI_Master_AXI_0_19;
-  component design_1_xlconcat_0_3 is
+  end component design_1_SPI_Master_AXI_0_20;
+  component design_1_Signal_Freq_test_0_0 is
   port (
-    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
-    dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+    Clk : in STD_LOGIC;
+    rst : in STD_LOGIC;
+    in_signal : in STD_LOGIC;
+    out_signal : out STD_LOGIC
   );
-  end component design_1_xlconcat_0_3;
+  end component design_1_Signal_Freq_test_0_0;
   signal axi_uartlite_0_interrupt : STD_LOGIC;
   signal clk_wiz_0_locked : STD_LOGIC;
   signal mdm_1_debug_sys_rst : STD_LOGIC;
@@ -1737,6 +1746,7 @@ architecture STRUCTURE of design_1 is
   signal rst_clk_wiz_1_100M_mb_reset : STD_LOGIC;
   signal rst_clk_wiz_1_100M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal rst_clk_wiz_1_100M_peripheral_reset : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal \^sclk\ : STD_LOGIC;
   signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal NLW_rst_clk_wiz_1_100M_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   attribute BMM_INFO_PROCESSOR : string;
@@ -1750,6 +1760,7 @@ architecture STRUCTURE of design_1 is
   attribute X_INTERFACE_INFO of rst : signal is "xilinx.com:signal:reset:1.0 RST.RST RST";
   attribute X_INTERFACE_PARAMETER of rst : signal is "XIL_INTERFACENAME RST.RST, INSERT_VIP 0, POLARITY ACTIVE_HIGH";
 begin
+  sclk <= \^sclk\;
 Btn_led_0: component design_1_Btn_led_0_1
      port map (
       Clk => microblaze_0_Clk,
@@ -1757,7 +1768,7 @@ Btn_led_0: component design_1_Btn_led_0_1
       rst => rst_clk_wiz_1_100M_peripheral_reset(0),
       sig => led1
     );
-SPI_Master_AXI_0: component design_1_SPI_Master_AXI_0_19
+SPI_Master_AXI_0: component design_1_SPI_Master_AXI_0_20
      port map (
       miso => miso,
       mosi => mosi,
@@ -1782,8 +1793,15 @@ SPI_Master_AXI_0: component design_1_SPI_Master_AXI_0_19
       s00_axi_wready => microblaze_0_axi_periph_M02_AXI_WREADY,
       s00_axi_wstrb(3 downto 0) => microblaze_0_axi_periph_M02_AXI_WSTRB(3 downto 0),
       s00_axi_wvalid => microblaze_0_axi_periph_M02_AXI_WVALID,
-      sclk => sclk,
+      sclk => \^sclk\,
       ss_n => ss_n
+    );
+Signal_Freq_test_0: component design_1_Signal_Freq_test_0_0
+     port map (
+      Clk => microblaze_0_Clk,
+      in_signal => \^sclk\,
+      out_signal => test_sclk,
+      rst => rst_clk_wiz_1_100M_peripheral_reset(0)
     );
 axi_uartlite_0: component design_1_axi_uartlite_0_0
      port map (

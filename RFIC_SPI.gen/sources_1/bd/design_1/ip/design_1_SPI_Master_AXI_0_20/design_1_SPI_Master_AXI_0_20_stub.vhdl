@@ -2,18 +2,18 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Fri Mar 27 13:03:31 2026
+-- Date        : Wed Apr  1 15:23:30 2026
 -- Host        : Yousef-Machine running 64-bit Ubuntu 24.04.4 LTS
 -- Command     : write_vhdl -force -mode synth_stub
---               /home/yousef/Vivado_workspace/RFIC_SPI/RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_SPI_Master_AXI_0_19/design_1_SPI_Master_AXI_0_19_stub.vhdl
--- Design      : design_1_SPI_Master_AXI_0_19
+--               /home/yousef/Vivado_workspace/RFIC_SPI/RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_SPI_Master_AXI_0_20/design_1_SPI_Master_AXI_0_20_stub.vhdl
+-- Design      : design_1_SPI_Master_AXI_0_20
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7a15tcpg236-1
 -- --------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity design_1_SPI_Master_AXI_0_19 is
+entity design_1_SPI_Master_AXI_0_20 is
   Port ( 
     miso : in STD_LOGIC;
     mosi : out STD_LOGIC;
@@ -43,12 +43,12 @@ entity design_1_SPI_Master_AXI_0_19 is
   );
 
   attribute CHECK_LICENSE_TYPE : string;
-  attribute CHECK_LICENSE_TYPE of design_1_SPI_Master_AXI_0_19 : entity is "design_1_SPI_Master_AXI_0_19,SPI_Master_AXI,{}";
+  attribute CHECK_LICENSE_TYPE of design_1_SPI_Master_AXI_0_20 : entity is "design_1_SPI_Master_AXI_0_20,SPI_Master_AXI,{}";
   attribute downgradeipidentifiedwarnings : string;
-  attribute downgradeipidentifiedwarnings of design_1_SPI_Master_AXI_0_19 : entity is "yes";
-end design_1_SPI_Master_AXI_0_19;
+  attribute downgradeipidentifiedwarnings of design_1_SPI_Master_AXI_0_20 : entity is "yes";
+end design_1_SPI_Master_AXI_0_20;
 
-architecture stub of design_1_SPI_Master_AXI_0_19 is
+architecture stub of design_1_SPI_Master_AXI_0_20 is
   attribute syn_black_box : boolean;
   attribute black_box_pad_pin : string;
   attribute syn_black_box of stub : architecture is true;

@@ -24,8 +24,8 @@
 				"partialBitstream": false,
 				"skipRevisionCheck": false,
 				"device": {
-					"plDevice": "Auto Detect",
-					"psDevice": "Auto Detect"
+					"plDevice": "Digilent Cmod A7 - 15T 210328B5611DA/2-xc7a15t",
+					"psDevice": "Digilent Cmod A7 - 15T 210328B5611DA/undefined-undefined"
 				},
 				"bitstreamFile": "/home/yousef/Vivado_workspace/RFIC_SPI/RFIC_SPI.runs/impl_1/design_1_wrapper.bit",
 				"downloadElf": [

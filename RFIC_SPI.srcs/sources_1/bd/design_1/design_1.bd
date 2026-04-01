@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x2AF5F2E99296E552",
+      "boundary_crc": "0x92E2F9774BC7EA52",
       "device": "xc7a15tcpg236-1",
       "gen_directory": "../../../../RFIC_SPI.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -32,8 +32,9 @@
       "clk_wiz_0": "",
       "axi_uartlite_0": "",
       "Btn_led_0": "",
+      "xlconcat_0": "",
       "SPI_Master_AXI_0": "",
-      "xlconcat_0": ""
+      "Signal_Freq_test_0": ""
     },
     "interface_ports": {
       "usb_uart": {
@@ -103,6 +104,9 @@
       },
       "btn": {
         "direction": "I"
+      },
+      "test_sclk": {
+        "direction": "O"
       }
     },
     "components": {
@@ -1043,14 +1047,6 @@
           }
         }
       },
-      "SPI_Master_AXI_0": {
-        "vlnv": "user.org:user:SPI_Master_AXI:1.0",
-        "ip_revision": "5",
-        "xci_name": "design_1_SPI_Master_AXI_0_19",
-        "xci_path": "ip/design_1_SPI_Master_AXI_0_19/design_1_SPI_Master_AXI_0_19.xci",
-        "inst_hier_path": "SPI_Master_AXI_0",
-        "has_run_ip_tcl": "true"
-      },
       "xlconcat_0": {
         "vlnv": "xilinx.com:ip:xlconcat:2.1",
         "ip_revision": "7",
@@ -1058,6 +1054,49 @@
         "xci_path": "ip/design_1_xlconcat_0_3/design_1_xlconcat_0_3.xci",
         "inst_hier_path": "xlconcat_0",
         "has_run_ip_tcl": "true"
+      },
+      "SPI_Master_AXI_0": {
+        "vlnv": "user.org:user:SPI_Master_AXI:1.0",
+        "ip_revision": "29",
+        "xci_name": "design_1_SPI_Master_AXI_0_20",
+        "xci_path": "ip/design_1_SPI_Master_AXI_0_20/design_1_SPI_Master_AXI_0_20.xci",
+        "inst_hier_path": "SPI_Master_AXI_0",
+        "has_run_ip_tcl": "true"
+      },
+      "Signal_Freq_test_0": {
+        "vlnv": "xilinx.com:module_ref:Signal_Freq_test:1.0",
+        "ip_revision": "1",
+        "xci_name": "design_1_Signal_Freq_test_0_0",
+        "xci_path": "ip/design_1_Signal_Freq_test_0_0/design_1_Signal_Freq_test_0_0.xci",
+        "inst_hier_path": "Signal_Freq_test_0",
+        "has_run_ip_tcl": "true",
+        "reference_info": {
+          "ref_type": "hdl",
+          "ref_name": "Signal_Freq_test",
+          "boundary_crc": "0x0"
+        },
+        "ports": {
+          "Clk": {
+            "type": "clk",
+            "direction": "I",
+            "parameters": {
+              "ASSOCIATED_RESET": {
+                "value": "rst",
+                "value_src": "constant"
+              }
+            }
+          },
+          "rst": {
+            "type": "rst",
+            "direction": "I"
+          },
+          "in_signal": {
+            "direction": "I"
+          },
+          "out_signal": {
+            "direction": "O"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -1132,13 +1171,20 @@
       "SPI_Master_AXI_0_sclk": {
         "ports": [
           "SPI_Master_AXI_0/sclk",
-          "sclk"
+          "sclk",
+          "Signal_Freq_test_0/in_signal"
         ]
       },
       "SPI_Master_AXI_0_ss_n": {
         "ports": [
           "SPI_Master_AXI_0/ss_n",
           "ss_n"
+        ]
+      },
+      "Signal_Freq_test_0_out_signal": {
+        "ports": [
+          "Signal_Freq_test_0/out_signal",
+          "test_sclk"
         ]
       },
       "axi_uartlite_0_interrupt": {
@@ -1186,6 +1232,7 @@
           "microblaze_0_axi_periph/M01_ACLK",
           "microblaze_0_axi_periph/M02_ACLK",
           "Btn_led_0/Clk",
+          "Signal_Freq_test_0/Clk",
           "SPI_Master_AXI_0/s00_axi_aclk"
         ]
       },
@@ -1231,7 +1278,8 @@
       "rst_clk_wiz_1_100M_peripheral_reset": {
         "ports": [
           "rst_clk_wiz_1_100M/peripheral_reset",
-          "Btn_led_0/rst"
+          "Btn_led_0/rst",
+          "Signal_Freq_test_0/rst"
         ]
       },
       "sys_clock_1": {

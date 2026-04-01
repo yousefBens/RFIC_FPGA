@@ -5,7 +5,7 @@ use IEEE.NUMERIC_STD.ALL;
 entity SPI_Master is
   generic (
     DATA_LENGTH : integer := 60;
-    CLK_DIV     : integer := 6   -- diviseur pour générer SCLK à partir de Clk
+    CLK_DIV     : integer := 2   -- diviseur pour générer SCLK à partir de Clk
                                  -- SCLK = Clk / (2 * CLK_DIV)
   );
   port (

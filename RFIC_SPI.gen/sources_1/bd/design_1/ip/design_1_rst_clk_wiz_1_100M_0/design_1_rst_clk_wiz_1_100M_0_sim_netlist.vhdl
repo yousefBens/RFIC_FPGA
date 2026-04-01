@@ -4,8 +4,8 @@
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
 -- Date        : Tue Mar 24 15:34:10 2026
 -- Host        : Yousef-Machine running 64-bit Ubuntu 24.04.4 LTS
--- Command     : write_vhdl -force -mode funcsim
---               /home/yousef/Vivado_workspace/RFIC_SPI/RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_rst_clk_wiz_1_100M_0/design_1_rst_clk_wiz_1_100M_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top design_1_rst_clk_wiz_1_100M_0 -prefix
+--               design_1_rst_clk_wiz_1_100M_0_ design_1_rst_clk_wiz_1_100M_0_sim_netlist.vhdl
 -- Design      : design_1_rst_clk_wiz_1_100M_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -22,8 +22,6 @@ entity design_1_rst_clk_wiz_1_100M_0_upcnt_n is
     seq_cnt_en : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_rst_clk_wiz_1_100M_0_upcnt_n : entity is "upcnt_n";
 end design_1_rst_clk_wiz_1_100M_0_upcnt_n;
 
 architecture STRUCTURE of design_1_rst_clk_wiz_1_100M_0_upcnt_n is
@@ -190,8 +188,6 @@ entity design_1_rst_clk_wiz_1_100M_0_xpm_cdc_single is
   attribute DEST_SYNC_FF of design_1_rst_clk_wiz_1_100M_0_xpm_cdc_single : entity is 4;
   attribute INIT_SYNC_FF : integer;
   attribute INIT_SYNC_FF of design_1_rst_clk_wiz_1_100M_0_xpm_cdc_single : entity is 0;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_rst_clk_wiz_1_100M_0_xpm_cdc_single : entity is "xpm_cdc_single";
   attribute SIM_ASSERT_CHK : integer;
   attribute SIM_ASSERT_CHK of design_1_rst_clk_wiz_1_100M_0_xpm_cdc_single : entity is 0;
   attribute SRC_INPUT_REG : integer;
@@ -362,8 +358,6 @@ entity design_1_rst_clk_wiz_1_100M_0_lpf is
     mb_debug_sys_rst : in STD_LOGIC;
     aux_reset_in : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_rst_clk_wiz_1_100M_0_lpf : entity is "lpf";
 end design_1_rst_clk_wiz_1_100M_0_lpf;
 
 architecture STRUCTURE of design_1_rst_clk_wiz_1_100M_0_lpf is
@@ -607,8 +601,6 @@ entity design_1_rst_clk_wiz_1_100M_0_sequence_psr is
     lpf_int : in STD_LOGIC;
     slowest_sync_clk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_rst_clk_wiz_1_100M_0_sequence_psr : entity is "sequence_psr";
 end design_1_rst_clk_wiz_1_100M_0_sequence_psr;
 
 architecture STRUCTURE of design_1_rst_clk_wiz_1_100M_0_sequence_psr is
@@ -947,8 +939,6 @@ entity design_1_rst_clk_wiz_1_100M_0_proc_sys_reset is
   attribute C_NUM_PERP_ARESETN of design_1_rst_clk_wiz_1_100M_0_proc_sys_reset : entity is 1;
   attribute C_NUM_PERP_RST : integer;
   attribute C_NUM_PERP_RST of design_1_rst_clk_wiz_1_100M_0_proc_sys_reset : entity is 1;
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of design_1_rst_clk_wiz_1_100M_0_proc_sys_reset : entity is "proc_sys_reset";
 end design_1_rst_clk_wiz_1_100M_0_proc_sys_reset;
 
 architecture STRUCTURE of design_1_rst_clk_wiz_1_100M_0_proc_sys_reset is
