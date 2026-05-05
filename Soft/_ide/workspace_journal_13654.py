@@ -1,4 +1,4 @@
-# 2026-05-05T09:37:14.103023
+# 2026-04-15T09:25:42.962345
 import vitis
 
 client = vitis.create_client()
@@ -13,4 +13,6 @@ status = platform.build()
 
 comp = client.get_component(name="RFIC_app")
 comp.build()
+
+vitis.dispose()
 

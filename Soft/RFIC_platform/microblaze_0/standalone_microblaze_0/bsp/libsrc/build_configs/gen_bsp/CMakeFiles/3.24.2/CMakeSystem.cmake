@@ -1,6 +1,6 @@
-set(CMAKE_HOST_SYSTEM "Linux-6.17.0-19-generic")
+set(CMAKE_HOST_SYSTEM "Linux-6.17.0-23-generic")
 set(CMAKE_HOST_SYSTEM_NAME "Linux")
-set(CMAKE_HOST_SYSTEM_VERSION "6.17.0-19-generic")
+set(CMAKE_HOST_SYSTEM_VERSION "6.17.0-23-generic")
 set(CMAKE_HOST_SYSTEM_PROCESSOR "x86_64")
 
 include("/home/yousef/Vivado_workspace/RFIC_SPI/Soft/RFIC_platform/microblaze_0/standalone_microblaze_0/bsp/microblaze_toolchain.cmake")

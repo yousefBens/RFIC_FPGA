@@ -1,7 +1,7 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.717936",
-   "Default View_TopLeft":"1157,25",
+   "Default View_ScaleFactor":"0.824055",
+   "Default View_TopLeft":"1385,205",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0 TLS
 #  -string -flagsOSRD
@@ -14,9 +14,10 @@ preplace port port-id_mosi -pg 1 -lvl 10 -x 2630 -y 550 -defaultsOSRD
 preplace port port-id_sclk -pg 1 -lvl 10 -x 2630 -y 580 -defaultsOSRD
 preplace port port-id_ss_n -pg 1 -lvl 10 -x 2630 -y 610 -defaultsOSRD
 preplace port port-id_miso -pg 1 -lvl 0 -x -100 -y 630 -defaultsOSRD
-preplace port port-id_led1 -pg 1 -lvl 10 -x 2630 -y 690 -defaultsOSRD
+preplace port port-id_led1 -pg 1 -lvl 10 -x 2630 -y 640 -defaultsOSRD
 preplace port port-id_btn -pg 1 -lvl 0 -x -100 -y 600 -defaultsOSRD
-preplace port port-id_test_sclk -pg 1 -lvl 10 -x 2630 -y 720 -defaultsOSRD
+preplace port port-id_test_sclk -pg 1 -lvl 10 -x 2630 -y 790 -defaultsOSRD
+preplace port port-id_spi_ldb -pg 1 -lvl 10 -x 2630 -y 710 -defaultsOSRD
 preplace inst microblaze_0 -pg 1 -lvl 4 -x 1110 -y 390 -defaultsOSRD
 preplace inst microblaze_0_local_memory -pg 1 -lvl 7 -x 1950 -y 400 -defaultsOSRD
 preplace inst microblaze_0_axi_periph -pg 1 -lvl 7 -x 1950 -y 170 -defaultsOSRD
@@ -29,11 +30,11 @@ preplace inst Btn_led_0 -pg 1 -lvl 5 -x 1460 -y 590 -defaultsOSRD
 preplace inst xlconcat_0 -pg 1 -lvl 2 -x 400 -y 420 -defaultsOSRD
 preplace inst SPI_Master_AXI_0 -pg 1 -lvl 6 -x 1680 -y 680 -defaultsOSRD
 preplace inst Signal_Freq_test_0 -pg 1 -lvl 8 -x 2250 -y 790 -defaultsOSRD
-preplace netloc Btn_led_0_sig 1 5 5 NJ 590 N 590 NJ 590 N 590 2600
+preplace netloc Btn_led_0_sig 1 5 5 NJ 590 1800 640 NJ 640 N 640 N
 preplace netloc SPI_Master_AXI_0_mosi 1 6 4 1790J 550 NJ 550 N 550 N
-preplace netloc SPI_Master_AXI_0_sclk 1 6 4 NJ 680 2130J 580 N 580 N
-preplace netloc SPI_Master_AXI_0_ss_n 1 6 4 1800 610 NJ 610 N 610 NJ
-preplace netloc Signal_Freq_test_0_out_signal 1 8 2 NJ 790 2600
+preplace netloc SPI_Master_AXI_0_sclk 1 6 4 NJ 670 2130J 580 N 580 N
+preplace netloc SPI_Master_AXI_0_ss_n 1 6 4 1800 650 NJ 650 N 650 2600J
+preplace netloc Signal_Freq_test_0_out_signal 1 8 2 NJ 790 N
 preplace netloc axi_uartlite_0_interrupt 1 1 9 220 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 N 490 2600
 preplace netloc axi_uartlite_0_tx 1 9 1 NJ 200
 preplace netloc btn_1 1 0 5 NJ 600 NJ 600 NJ 600 NJ 600 1340
@@ -49,6 +50,7 @@ preplace netloc rst_clk_wiz_1_100M_peripheral_reset 1 2 6 610J 250 NJ 250 1360 7
 preplace netloc sys_clock_1 1 0 1 NJ 310
 preplace netloc uart_txd_in_1 1 0 10 -80J 0 NJ 0 NJ 0 NJ 0 NJ 0 N 0 N 0 NJ 0 N 0 2600
 preplace netloc xlconcat_0_dout 1 2 1 610 370n
+preplace netloc SPI_Master_AXI_0_ldb 1 6 4 NJ 710 NJ 710 NJ 710 NJ
 preplace netloc axi_uartlite_0_UART 1 9 1 NJ 160
 preplace netloc microblaze_0_axi_dp 1 4 3 1340 70 N 70 N
 preplace netloc microblaze_0_axi_periph_M01_AXI 1 7 2 N 170 N

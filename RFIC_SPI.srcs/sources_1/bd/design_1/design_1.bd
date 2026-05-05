@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x92E2F9774BC7EA52",
+      "boundary_crc": "0x92006A3600E6C0CE",
       "device": "xc7a15tcpg236-1",
       "gen_directory": "../../../../RFIC_SPI.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -106,6 +106,9 @@
         "direction": "I"
       },
       "test_sclk": {
+        "direction": "O"
+      },
+      "spi_ldb": {
         "direction": "O"
       }
     },
@@ -1057,7 +1060,7 @@
       },
       "SPI_Master_AXI_0": {
         "vlnv": "user.org:user:SPI_Master_AXI:1.0",
-        "ip_revision": "29",
+        "ip_revision": "50",
         "xci_name": "design_1_SPI_Master_AXI_0_20",
         "xci_path": "ip/design_1_SPI_Master_AXI_0_20/design_1_SPI_Master_AXI_0_20.xci",
         "inst_hier_path": "SPI_Master_AXI_0",
@@ -1160,6 +1163,12 @@
         "ports": [
           "Btn_led_0/sig",
           "led1"
+        ]
+      },
+      "SPI_Master_AXI_0_ldb": {
+        "ports": [
+          "SPI_Master_AXI_0/ldb",
+          "spi_ldb"
         ]
       },
       "SPI_Master_AXI_0_mosi": {

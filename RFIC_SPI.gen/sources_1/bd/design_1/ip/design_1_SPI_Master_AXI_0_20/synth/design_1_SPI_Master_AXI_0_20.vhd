@@ -47,7 +47,7 @@
 -- DO NOT MODIFY THIS FILE.
 
 -- IP VLNV: user.org:user:SPI_Master_AXI:1.0
--- IP Revision: 29
+-- IP Revision: 50
 
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -59,6 +59,7 @@ ENTITY design_1_SPI_Master_AXI_0_20 IS
     mosi : OUT STD_LOGIC;
     sclk : OUT STD_LOGIC;
     ss_n : OUT STD_LOGIC;
+    ldb : OUT STD_LOGIC;
     s00_axi_aclk : IN STD_LOGIC;
     s00_axi_aresetn : IN STD_LOGIC;
     s00_axi_awaddr : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
@@ -96,6 +97,7 @@ ARCHITECTURE design_1_SPI_Master_AXI_0_20_arch OF design_1_SPI_Master_AXI_0_20 I
       mosi : OUT STD_LOGIC;
       sclk : OUT STD_LOGIC;
       ss_n : OUT STD_LOGIC;
+      ldb : OUT STD_LOGIC;
       s00_axi_aclk : IN STD_LOGIC;
       s00_axi_aresetn : IN STD_LOGIC;
       s00_axi_awaddr : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
@@ -165,6 +167,7 @@ BEGIN
       mosi => mosi,
       sclk => sclk,
       ss_n => ss_n,
+      ldb => ldb,
       s00_axi_aclk => s00_axi_aclk,
       s00_axi_aresetn => s00_axi_aresetn,
       s00_axi_awaddr => s00_axi_awaddr,

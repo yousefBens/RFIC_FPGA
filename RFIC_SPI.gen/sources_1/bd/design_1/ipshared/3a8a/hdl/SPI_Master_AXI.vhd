@@ -13,6 +13,7 @@ entity SPI_Master_AXI is
 		mosi : out std_logic;
 		sclk : out std_logic;
 		ss_n : out std_logic;
+		ldb  : out std_logic;
 		-- User ports ends
 
 		-- Ports of Axi Slave Bus Interface S00_AXI
@@ -92,7 +93,8 @@ architecture arch_imp of SPI_Master_AXI is
 	component SPI_Master is
 		generic (
 			DATA_LENGTH : integer := 60;
-			CLK_DIV     : integer := 6
+			CLK_DIV     : integer := 8;
+			LDB_DELAY   : integer := 4 
 		);
 		port (
 			Clk     : in  std_logic;
@@ -105,7 +107,8 @@ architecture arch_imp of SPI_Master_AXI is
 			sclk    : out std_logic;
 			mosi    : out std_logic;
 			miso    : in  std_logic;
-			ss_n    : out std_logic
+			ss_n    : out std_logic;
+			ldb     : out std_logic
 		);
 	end component;
 
@@ -151,7 +154,8 @@ begin
 	u_spi_master : SPI_Master
 		generic map (
 			DATA_LENGTH => 60,
-			CLK_DIV     => 6
+			CLK_DIV     => 8,
+			LDB_DELAY   => 4
 		)
 		port map (
 			Clk     => s00_axi_aclk,
@@ -164,7 +168,8 @@ begin
 			sclk    => sclk,
 			mosi    => mosi,
 			miso    => miso,
-			ss_n    => ss_n
+			ss_n    => ss_n,
+			ldb     => ldb
 		);
 
 end arch_imp;

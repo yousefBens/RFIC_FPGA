@@ -2,7 +2,7 @@
 --Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
---Date        : Wed Apr  1 15:23:07 2026
+--Date        : Tue May  5 09:32:51 2026
 --Host        : Yousef-Machine running 64-bit Ubuntu 24.04.4 LTS
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -1424,6 +1424,7 @@ entity design_1 is
     mosi : out STD_LOGIC;
     rst : in STD_LOGIC;
     sclk : out STD_LOGIC;
+    spi_ldb : out STD_LOGIC;
     ss_n : out STD_LOGIC;
     test_sclk : out STD_LOGIC;
     uart_rxd_out : out STD_LOGIC;
@@ -1604,6 +1605,7 @@ architecture STRUCTURE of design_1 is
     mosi : out STD_LOGIC;
     sclk : out STD_LOGIC;
     ss_n : out STD_LOGIC;
+    ldb : out STD_LOGIC;
     s00_axi_aclk : in STD_LOGIC;
     s00_axi_aresetn : in STD_LOGIC;
     s00_axi_awaddr : in STD_LOGIC_VECTOR ( 4 downto 0 );
@@ -1770,6 +1772,7 @@ Btn_led_0: component design_1_Btn_led_0_1
     );
 SPI_Master_AXI_0: component design_1_SPI_Master_AXI_0_20
      port map (
+      ldb => spi_ldb,
       miso => miso,
       mosi => mosi,
       s00_axi_aclk => microblaze_0_Clk,

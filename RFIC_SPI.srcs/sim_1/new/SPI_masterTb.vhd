@@ -30,6 +30,7 @@ architecture DUT of SPI_masterTb is
   signal mosi     : std_logic;
   signal miso     : std_logic := '0';
   signal ss_n     : std_logic;
+  signal ldb      : std_logic;
 
   --------------------------------------------------------------------------
   -- Données simulées côté esclave
@@ -44,7 +45,8 @@ begin
   UUT : entity work.SPI_Master
     generic map (
       DATA_LENGTH => DATA_LENGTH,
-      CLK_DIV     => 6
+      CLK_DIV     => 6,
+      LDB_DELAY   => 2
     )
     port map (
       Clk     => Clk,
@@ -54,10 +56,12 @@ begin
       rx_data => rx_data,
       busy    => busy,
       done    => done,
+
       sclk    => sclk,
       mosi    => mosi,
       miso    => miso,
-      ss_n    => ss_n
+      ss_n    => ss_n,
+      ldb     => ldb
     );
 
   --------------------------------------------------------------------------
@@ -78,6 +82,7 @@ begin
   --------------------------------------------------------------------------
   stim_proc : process
   begin
+
     ------------------------------------------------------------------------
     -- Reset
     ------------------------------------------------------------------------
@@ -91,13 +96,15 @@ begin
     ------------------------------------------------------------------------
     tx_data <= x"A5F0";
 
-    -- pulse start sur 1 cycle
     start <= '1';
     wait for CLK_PERIOD;
     start <= '0';
 
-    -- attendre la fin
     wait until done = '1';
+
+    report "Transaction 1 terminee";
+    report "RX_DATA = " & integer'image(to_integer(unsigned(rx_data)));
+
     wait for 5 * CLK_PERIOD;
 
     ------------------------------------------------------------------------
@@ -111,36 +118,41 @@ begin
     start <= '0';
 
     wait until done = '1';
+
+    report "Transaction 2 terminee";
+    report "RX_DATA = " & integer'image(to_integer(unsigned(rx_data)));
+
     wait for 10 * CLK_PERIOD;
 
     ------------------------------------------------------------------------
     -- Fin simulation
     ------------------------------------------------------------------------
+    report "Simulation terminee";
     wait;
+
   end process;
 
   --------------------------------------------------------------------------
-  -- Modèle très simple d'esclave SPI
-  -- Mode 0 :
-  -- - le master lit MISO sur front montant
-  -- - l'esclave change MISO sur front descendant
+  -- Modèle simple d'esclave SPI mode 0
+  -- Master :
+  -- - MOSI change sur front descendant
+  -- - MISO est lu sur front montant
   --------------------------------------------------------------------------
   slave_model : process
   begin
-    -- attendre début transaction
-    wait until ss_n = '0';
+    loop
+      wait until ss_n = '0';
 
-    -- présenter le premier bit avant le premier front montant
-    miso <= slave_tx_shift(DATA_LENGTH-1);
+      miso <= slave_tx_shift(DATA_LENGTH-1);
 
-    for i in DATA_LENGTH-1 downto 1 loop
-      wait until falling_edge(sclk);
-      miso <= slave_tx_shift(i-1);
+      for i in DATA_LENGTH-1 downto 1 loop
+        wait until falling_edge(sclk);
+        miso <= slave_tx_shift(i-1);
+      end loop;
+
+      wait until ss_n = '1';
+      miso <= '0';
     end loop;
-
-    -- attendre fin transaction
-    wait until ss_n = '1';
-    miso <= '0';
   end process;
 
 end DUT;
