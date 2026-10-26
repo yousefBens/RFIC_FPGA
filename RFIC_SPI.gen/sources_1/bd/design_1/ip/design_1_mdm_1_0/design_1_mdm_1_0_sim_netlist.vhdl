@@ -2,14 +2,14 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Tue Mar 24 15:33:45 2026
+-- Date        : Mon Oct 26 17:27:42 2026
 -- Host        : Yousef-Machine running 64-bit Ubuntu 24.04.4 LTS
--- Command     : write_vhdl -force -mode funcsim -rename_top design_1_mdm_1_0 -prefix
---               design_1_mdm_1_0_ design_1_mdm_1_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim
+--               /home/yousef/Vivado_workspace/RFIC_SPI/RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_mdm_1_0/design_1_mdm_1_0_sim_netlist.vhdl
 -- Design      : design_1_mdm_1_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
--- Device      : xc7a15tcpg236-1
+-- Device      : xc7a35tcpg236-1
 -- --------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -39,6 +39,8 @@ entity design_1_mdm_1_0_MB_BSCANE2 is
     \shift_Count_reg[0]\ : in STD_LOGIC;
     \Use_Serial_Unified_Completion.completion_status_reg[15]\ : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_1_mdm_1_0_MB_BSCANE2 : entity is "MB_BSCANE2";
 end design_1_mdm_1_0_MB_BSCANE2;
 
 architecture STRUCTURE of design_1_mdm_1_0_MB_BSCANE2 is
@@ -162,6 +164,8 @@ entity design_1_mdm_1_0_MB_BUFG is
     Dbg_Clk_0 : out STD_LOGIC;
     DRCK : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_1_mdm_1_0_MB_BUFG : entity is "MB_BUFG";
 end design_1_mdm_1_0_MB_BUFG;
 
 architecture STRUCTURE of design_1_mdm_1_0_MB_BUFG is
@@ -242,6 +246,8 @@ entity design_1_mdm_1_0_MB_FDC_1 is
     Dbg_Rst_0 : in STD_LOGIC;
     Debug_SYS_Rst : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_1_mdm_1_0_MB_FDC_1 : entity is "MB_FDC_1";
 end design_1_mdm_1_0_MB_FDC_1;
 
 architecture STRUCTURE of design_1_mdm_1_0_MB_FDC_1 is
@@ -835,6 +841,8 @@ entity design_1_mdm_1_0_MB_FDRE_1 is
     Dbg_Shift_0_3 : in STD_LOGIC;
     Dbg_Shift_0_4 : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_1_mdm_1_0_MB_FDRE_1 : entity is "MB_FDRE_1";
 end design_1_mdm_1_0_MB_FDRE_1;
 
 architecture STRUCTURE of design_1_mdm_1_0_MB_FDRE_1 is
@@ -880,6 +888,8 @@ entity design_1_mdm_1_0_MB_LUT1 is
     Ext_JTAG_TDI : out STD_LOGIC;
     I0 : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_1_mdm_1_0_MB_LUT1 : entity is "MB_LUT1";
 end design_1_mdm_1_0_MB_LUT1;
 
 architecture STRUCTURE of design_1_mdm_1_0_MB_LUT1 is
@@ -923,6 +933,8 @@ entity design_1_mdm_1_0_MB_SRL16E is
     \Use_E2.BSCANE2_I_i_4_0\ : in STD_LOGIC;
     config_TDO_2 : in STD_LOGIC
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_1_mdm_1_0_MB_SRL16E : entity is "MB_SRL16E";
 end design_1_mdm_1_0_MB_SRL16E;
 
 architecture STRUCTURE of design_1_mdm_1_0_MB_SRL16E is
@@ -1167,6 +1179,8 @@ entity design_1_mdm_1_0_JTAG_CONTROL is
     \Use_Serial_Unified_Completion.completion_status_reg[10]_0\ : in STD_LOGIC;
     \Use_Serial_Unified_Completion.completion_status_reg[15]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_1_mdm_1_0_JTAG_CONTROL : entity is "JTAG_CONTROL";
 end design_1_mdm_1_0_JTAG_CONTROL;
 
 architecture STRUCTURE of design_1_mdm_1_0_JTAG_CONTROL is
@@ -2667,6 +2681,8 @@ entity design_1_mdm_1_0_MDM_Core is
     \Use_Serial_Unified_Completion.completion_status_reg[10]\ : in STD_LOGIC;
     AR : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_1_mdm_1_0_MDM_Core : entity is "MDM_Core";
 end design_1_mdm_1_0_MDM_Core;
 
 architecture STRUCTURE of design_1_mdm_1_0_MDM_Core is
@@ -4773,7 +4789,7 @@ entity design_1_mdm_1_0_MDM is
   attribute C_DEBUG_INTERFACE : integer;
   attribute C_DEBUG_INTERFACE of design_1_mdm_1_0_MDM : entity is 0;
   attribute C_DEVICE : string;
-  attribute C_DEVICE of design_1_mdm_1_0_MDM : entity is "xc7a15t";
+  attribute C_DEVICE of design_1_mdm_1_0_MDM : entity is "xc7a35t";
   attribute C_EXT_TRIG_RESET_VALUE : string;
   attribute C_EXT_TRIG_RESET_VALUE of design_1_mdm_1_0_MDM : entity is "20'b11110001001000110100";
   attribute C_FAMILY : string;
@@ -4824,6 +4840,8 @@ entity design_1_mdm_1_0_MDM is
   attribute C_USE_CROSS_TRIGGER of design_1_mdm_1_0_MDM : entity is 0;
   attribute C_USE_UART : integer;
   attribute C_USE_UART of design_1_mdm_1_0_MDM : entity is 0;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_1_mdm_1_0_MDM : entity is "MDM";
   attribute bscan_debug_core : string;
   attribute bscan_debug_core of design_1_mdm_1_0_MDM : entity is "FALSE";
   attribute dont_touch : string;
@@ -11495,7 +11513,7 @@ architecture STRUCTURE of design_1_mdm_1_0 is
   attribute C_DEBUG_INTERFACE : integer;
   attribute C_DEBUG_INTERFACE of U0 : label is 0;
   attribute C_DEVICE : string;
-  attribute C_DEVICE of U0 : label is "xc7a15t";
+  attribute C_DEVICE of U0 : label is "xc7a35t";
   attribute C_EXT_TRIG_RESET_VALUE : string;
   attribute C_EXT_TRIG_RESET_VALUE of U0 : label is "20'b11110001001000110100";
   attribute C_FAMILY : string;

@@ -17,7 +17,7 @@
 -- Build files have been written to: /home/yousef/Vivado_workspace/RFIC_SPI/Soft/RFIC_platform/microblaze_0/standalone_microblaze_0/bsp/libsrc/build_configs/gen_bsp
 -- Cache values
 // BOARD
-BOARD:STRING=cmod_a7-15t
+BOARD:STRING=cmod_a7-35t
 
 // Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel ...
 CMAKE_BUILD_TYPE:STRING=
@@ -44,7 +44,7 @@ CMAKE_SPECS_FILE:STRING=/home/yousef/Vivado_workspace/RFIC_SPI/Soft/RFIC_platfor
 CMAKE_TOOLCHAIN_FILE:FILEPATH=/home/yousef/Vivado_workspace/RFIC_SPI/Soft/RFIC_platform/microblaze_0/standalone_microblaze_0/bsp/microblaze_toolchain.cmake
 
 // Device Id
-DEVICE_ID:STRING=7a15t
+DEVICE_ID:STRING=7a35t
 
 // The directory containing a CMake configuration file for SCUGIC.
 SCUGIC_DIR:PATH=SCUGIC_DIR-NOTFOUND

@@ -2,7 +2,7 @@
 --Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
---Date        : Tue May  5 09:32:51 2026
+--Date        : Mon Oct 26 17:27:00 2026
 --Host        : Yousef-Machine running 64-bit Ubuntu 24.04.4 LTS
 --Command     : generate_target design_1.bd
 --Design      : design_1
@@ -1040,7 +1040,7 @@ entity design_1_microblaze_0_axi_periph_0 is
 end design_1_microblaze_0_axi_periph_0;
 
 architecture STRUCTURE of design_1_microblaze_0_axi_periph_0 is
-  component design_1_microblaze_0_axi_periph_imp_xbar_0 is
+  component design_1_microblaze_0_axi_periph_upgraded_ipi_imp_xbar_0 is
   port (
     aclk : in STD_LOGIC;
     aresetn : in STD_LOGIC;
@@ -1083,7 +1083,7 @@ architecture STRUCTURE of design_1_microblaze_0_axi_periph_0 is
     m_axi_rvalid : in STD_LOGIC_VECTOR ( 2 downto 0 );
     m_axi_rready : out STD_LOGIC_VECTOR ( 2 downto 0 )
   );
-  end component design_1_microblaze_0_axi_periph_imp_xbar_0;
+  end component design_1_microblaze_0_axi_periph_upgraded_ipi_imp_xbar_0;
   signal s00_couplers_to_xbar_ARADDR : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal s00_couplers_to_xbar_ARPROT : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal s00_couplers_to_xbar_ARREADY : STD_LOGIC_VECTOR ( 0 to 0 );
@@ -1331,7 +1331,7 @@ s00_couplers: entity work.s00_couplers_imp_1RZP34U
       S_AXI_wstrb(3 downto 0) => S00_AXI_wstrb(3 downto 0),
       S_AXI_wvalid(0) => S00_AXI_wvalid(0)
     );
-xbar: component design_1_microblaze_0_axi_periph_imp_xbar_0
+xbar: component design_1_microblaze_0_axi_periph_upgraded_ipi_imp_xbar_0
      port map (
       aclk => ACLK,
       aresetn => ARESETN,
@@ -1431,7 +1431,7 @@ entity design_1 is
     uart_txd_in : in STD_LOGIC
   );
   attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=22,numReposBlks=16,numNonXlnxBlks=1,numHierBlks=6,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=16,da_board_cnt=6,da_clkrst_cnt=2,da_mb_cnt=2,synth_mode=Hierarchical}";
+  attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=23,numReposBlks=17,numNonXlnxBlks=1,numHierBlks=6,maxHierDepth=1,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=2,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=20,da_board_cnt=6,da_clkrst_cnt=2,da_mb_cnt=2,synth_mode=Hierarchical}";
   attribute HW_HANDOFF : string;
   attribute HW_HANDOFF of design_1 : entity is "design_1.hwdef";
 end design_1;
@@ -1592,14 +1592,29 @@ architecture STRUCTURE of design_1 is
     sig : out STD_LOGIC
   );
   end component design_1_Btn_led_0_1;
-  component design_1_xlconcat_0_3 is
+  component design_1_Signal_Freq_test_0_0 is
+  port (
+    Clk : in STD_LOGIC;
+    rst : in STD_LOGIC;
+    in_signal : in STD_LOGIC;
+    out_signal : out STD_LOGIC
+  );
+  end component design_1_Signal_Freq_test_0_0;
+  component design_1_xlconcat_0_4 is
   port (
     In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
     In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
     dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
   );
-  end component design_1_xlconcat_0_3;
-  component design_1_SPI_Master_AXI_0_20 is
+  end component design_1_xlconcat_0_4;
+  component design_1_xlconcat_1_0 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    In1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    dout : out STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component design_1_xlconcat_1_0;
+  component design_1_SPI_Master_AXI_0_24 is
   port (
     miso : in STD_LOGIC;
     mosi : out STD_LOGIC;
@@ -1628,15 +1643,7 @@ architecture STRUCTURE of design_1 is
     s00_axi_rvalid : out STD_LOGIC;
     s00_axi_rready : in STD_LOGIC
   );
-  end component design_1_SPI_Master_AXI_0_20;
-  component design_1_Signal_Freq_test_0_0 is
-  port (
-    Clk : in STD_LOGIC;
-    rst : in STD_LOGIC;
-    in_signal : in STD_LOGIC;
-    out_signal : out STD_LOGIC
-  );
-  end component design_1_Signal_Freq_test_0_0;
+  end component design_1_SPI_Master_AXI_0_24;
   signal axi_uartlite_0_interrupt : STD_LOGIC;
   signal clk_wiz_0_locked : STD_LOGIC;
   signal mdm_1_debug_sys_rst : STD_LOGIC;
@@ -1749,8 +1756,9 @@ architecture STRUCTURE of design_1 is
   signal rst_clk_wiz_1_100M_peripheral_aresetn : STD_LOGIC_VECTOR ( 0 to 0 );
   signal rst_clk_wiz_1_100M_peripheral_reset : STD_LOGIC_VECTOR ( 0 to 0 );
   signal \^sclk\ : STD_LOGIC;
-  signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal xlconcat_1_dout : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal NLW_rst_clk_wiz_1_100M_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_xlconcat_0_dout_UNCONNECTED : STD_LOGIC_VECTOR ( 1 downto 0 );
   attribute BMM_INFO_PROCESSOR : string;
   attribute BMM_INFO_PROCESSOR of microblaze_0 : label is "microblaze-le > design_1 microblaze_0_local_memory/dlmb_bram_if_cntlr";
   attribute KEEP_HIERARCHY : string;
@@ -1770,7 +1778,7 @@ Btn_led_0: component design_1_Btn_led_0_1
       rst => rst_clk_wiz_1_100M_peripheral_reset(0),
       sig => led1
     );
-SPI_Master_AXI_0: component design_1_SPI_Master_AXI_0_20
+SPI_Master_AXI_0: component design_1_SPI_Master_AXI_0_24
      port map (
       ldb => spi_ldb,
       miso => miso,
@@ -1940,7 +1948,7 @@ microblaze_0: component design_1_microblaze_0_0
 microblaze_0_axi_intc: component design_1_microblaze_0_axi_intc_0
      port map (
       interrupt_address(31 downto 0) => microblaze_0_interrupt_ADDRESS(31 downto 0),
-      intr(1 downto 0) => xlconcat_0_dout(1 downto 0),
+      intr(1 downto 0) => xlconcat_1_dout(1 downto 0),
       irq => microblaze_0_interrupt_INTERRUPT,
       processor_ack(1) => microblaze_0_interrupt_ACK(0),
       processor_ack(0) => microblaze_0_interrupt_ACK(1),
@@ -2088,10 +2096,16 @@ rst_clk_wiz_1_100M: component design_1_rst_clk_wiz_1_100M_0
       peripheral_reset(0) => rst_clk_wiz_1_100M_peripheral_reset(0),
       slowest_sync_clk => microblaze_0_Clk
     );
-xlconcat_0: component design_1_xlconcat_0_3
+xlconcat_0: component design_1_xlconcat_0_4
+     port map (
+      In0(0) => '0',
+      In1(0) => '0',
+      dout(1 downto 0) => NLW_xlconcat_0_dout_UNCONNECTED(1 downto 0)
+    );
+xlconcat_1: component design_1_xlconcat_1_0
      port map (
       In0(0) => axi_uartlite_0_interrupt,
       In1(0) => '0',
-      dout(1 downto 0) => xlconcat_0_dout(1 downto 0)
+      dout(1 downto 0) => xlconcat_1_dout(1 downto 0)
     );
 end STRUCTURE;

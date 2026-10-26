@@ -2,14 +2,14 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Tue Mar 24 15:33:40 2026
+-- Date        : Mon Oct 26 17:27:38 2026
 -- Host        : Yousef-Machine running 64-bit Ubuntu 24.04.4 LTS
--- Command     : write_vhdl -force -mode funcsim -rename_top design_1_ilmb_bram_if_cntlr_0 -prefix
---               design_1_ilmb_bram_if_cntlr_0_ design_1_ilmb_bram_if_cntlr_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim
+--               /home/yousef/Vivado_workspace/RFIC_SPI/RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_ilmb_bram_if_cntlr_0/design_1_ilmb_bram_if_cntlr_0_sim_netlist.vhdl
 -- Design      : design_1_ilmb_bram_if_cntlr_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
--- Device      : xc7a15tcpg236-1
+-- Device      : xc7a35tcpg236-1
 -- --------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -199,6 +199,8 @@ entity design_1_ilmb_bram_if_cntlr_0_lmb_bram_if_cntlr is
   attribute C_UE_FAILING_REGISTERS of design_1_ilmb_bram_if_cntlr_0_lmb_bram_if_cntlr : entity is 0;
   attribute C_WRITE_ACCESS : integer;
   attribute C_WRITE_ACCESS of design_1_ilmb_bram_if_cntlr_0_lmb_bram_if_cntlr : entity is 2;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_1_ilmb_bram_if_cntlr_0_lmb_bram_if_cntlr : entity is "lmb_bram_if_cntlr";
 end design_1_ilmb_bram_if_cntlr_0_lmb_bram_if_cntlr;
 
 architecture STRUCTURE of design_1_ilmb_bram_if_cntlr_0_lmb_bram_if_cntlr is

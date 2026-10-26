@@ -92,7 +92,7 @@
 #define XPAR_SPI_MASTER_AXI_0_HIGHADDR 0x44a0ffff
 
 /*  BOARD definition */
-#define XPS_BOARD_CMOD_A7-15T
+#define XPS_BOARD_CMOD_A7-35T
 
 #define XPAR_LMB_BRAM_0_BASEADDRESS 0x0
 #define XPAR_LMB_BRAM_0_HIGHADDRESS 0xffff
@@ -171,6 +171,6 @@
 #define XPAR_MICROBLAZE_ADDR_SIZE 32
 
 /* Device ID */
-#define XPAR_DEVICE_ID "7a15t"
+#define XPAR_DEVICE_ID "7a35t"
 
 #endif  /* end of protection macro */

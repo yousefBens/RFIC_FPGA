@@ -2,14 +2,14 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Tue Mar 24 15:33:45 2026
+// Date        : Mon Oct 26 17:27:36 2026
 // Host        : Yousef-Machine running 64-bit Ubuntu 24.04.4 LTS
-// Command     : write_verilog -force -mode funcsim -rename_top design_1_dlmb_v10_0 -prefix
-//               design_1_dlmb_v10_0_ design_1_dlmb_v10_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim
+//               /home/yousef/Vivado_workspace/RFIC_SPI/RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_dlmb_v10_0/design_1_dlmb_v10_0_sim_netlist.v
 // Design      : design_1_dlmb_v10_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
-// Device      : xc7a15tcpg236-1
+// Device      : xc7a35tcpg236-1
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
@@ -127,7 +127,7 @@ module design_1_dlmb_v10_0
 endmodule
 
 (* C_EXT_RESET_HIGH = "1" *) (* C_LMB_AWIDTH = "32" *) (* C_LMB_DWIDTH = "32" *) 
-(* C_LMB_NUM_SLAVES = "1" *) (* C_LMB_PROTOCOL = "0" *) 
+(* C_LMB_NUM_SLAVES = "1" *) (* C_LMB_PROTOCOL = "0" *) (* ORIG_REF_NAME = "lmb_v10" *) 
 module design_1_dlmb_v10_0_lmb_v10
    (LMB_Clk,
     SYS_Rst,

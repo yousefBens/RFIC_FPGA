@@ -2,13 +2,13 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Tue Mar 31 12:04:36 2026
+// Date        : Mon Oct 26 17:27:46 2026
 // Host        : Yousef-Machine running 64-bit Ubuntu 24.04.4 LTS
 // Command     : write_verilog -force -mode synth_stub
 //               /home/yousef/Vivado_workspace/RFIC_SPI/RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_Signal_Freq_test_0_0/design_1_Signal_Freq_test_0_0_stub.v
 // Design      : design_1_Signal_Freq_test_0_0
 // Purpose     : Stub declaration of top-level module interface
-// Device      : xc7a15tcpg236-1
+// Device      : xc7a35tcpg236-1
 // --------------------------------------------------------------------------------
 
 // This empty module with port declaration file causes synthesis tools to infer a black box for IP.

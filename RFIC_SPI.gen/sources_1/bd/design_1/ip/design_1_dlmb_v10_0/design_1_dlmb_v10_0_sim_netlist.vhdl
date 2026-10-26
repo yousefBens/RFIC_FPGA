@@ -2,14 +2,14 @@
 -- Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
--- Date        : Tue Mar 24 15:33:45 2026
+-- Date        : Mon Oct 26 17:27:36 2026
 -- Host        : Yousef-Machine running 64-bit Ubuntu 24.04.4 LTS
--- Command     : write_vhdl -force -mode funcsim -rename_top design_1_dlmb_v10_0 -prefix
---               design_1_dlmb_v10_0_ design_1_dlmb_v10_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim
+--               /home/yousef/Vivado_workspace/RFIC_SPI/RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_dlmb_v10_0/design_1_dlmb_v10_0_sim_netlist.vhdl
 -- Design      : design_1_dlmb_v10_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
--- Device      : xc7a15tcpg236-1
+-- Device      : xc7a35tcpg236-1
 -- --------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -53,6 +53,8 @@ entity design_1_dlmb_v10_0_lmb_v10 is
   attribute C_LMB_NUM_SLAVES of design_1_dlmb_v10_0_lmb_v10 : entity is 1;
   attribute C_LMB_PROTOCOL : integer;
   attribute C_LMB_PROTOCOL of design_1_dlmb_v10_0_lmb_v10 : entity is 0;
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of design_1_dlmb_v10_0_lmb_v10 : entity is "lmb_v10";
 end design_1_dlmb_v10_0_lmb_v10;
 
 architecture STRUCTURE of design_1_dlmb_v10_0_lmb_v10 is

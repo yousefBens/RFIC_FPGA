@@ -2,14 +2,14 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Tue Mar 24 15:34:10 2026
+// Date        : Mon Oct 26 17:27:39 2026
 // Host        : Yousef-Machine running 64-bit Ubuntu 24.04.4 LTS
-// Command     : write_verilog -force -mode funcsim -rename_top design_1_rst_clk_wiz_1_100M_0 -prefix
-//               design_1_rst_clk_wiz_1_100M_0_ design_1_rst_clk_wiz_1_100M_0_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim
+//               /home/yousef/Vivado_workspace/RFIC_SPI/RFIC_SPI.gen/sources_1/bd/design_1/ip/design_1_rst_clk_wiz_1_100M_0/design_1_rst_clk_wiz_1_100M_0_sim_netlist.v
 // Design      : design_1_rst_clk_wiz_1_100M_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
-// Device      : xc7a15tcpg236-1
+// Device      : xc7a35tcpg236-1
 // --------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
@@ -71,6 +71,7 @@ module design_1_rst_clk_wiz_1_100M_0
         .slowest_sync_clk(slowest_sync_clk));
 endmodule
 
+(* ORIG_REF_NAME = "lpf" *) 
 module design_1_rst_clk_wiz_1_100M_0_lpf
    (lpf_int,
     slowest_sync_clk,
@@ -261,6 +262,7 @@ endmodule
 (* C_AUX_RESET_HIGH = "1'b0" *) (* C_AUX_RST_WIDTH = "4" *) (* C_EXT_RESET_HIGH = "1'b1" *) 
 (* C_EXT_RST_WIDTH = "4" *) (* C_FAMILY = "artix7" *) (* C_NUM_BUS_RST = "1" *) 
 (* C_NUM_INTERCONNECT_ARESETN = "1" *) (* C_NUM_PERP_ARESETN = "1" *) (* C_NUM_PERP_RST = "1" *) 
+(* ORIG_REF_NAME = "proc_sys_reset" *) 
 module design_1_rst_clk_wiz_1_100M_0_proc_sys_reset
    (slowest_sync_clk,
     ext_reset_in,
@@ -377,6 +379,7 @@ module design_1_rst_clk_wiz_1_100M_0_proc_sys_reset
         .slowest_sync_clk(slowest_sync_clk));
 endmodule
 
+(* ORIG_REF_NAME = "sequence_psr" *) 
 module design_1_rst_clk_wiz_1_100M_0_sequence_psr
    (MB_out,
     Bsr_out,
@@ -617,6 +620,7 @@ module design_1_rst_clk_wiz_1_100M_0_sequence_psr
         .R(lpf_int));
 endmodule
 
+(* ORIG_REF_NAME = "upcnt_n" *) 
 module design_1_rst_clk_wiz_1_100M_0_upcnt_n
    (Q,
     seq_clr,
@@ -738,9 +742,9 @@ module design_1_rst_clk_wiz_1_100M_0_upcnt_n
         .R(clear));
 endmodule
 
-(* DEST_SYNC_FF = "4" *) (* INIT_SYNC_FF = "0" *) (* SIM_ASSERT_CHK = "0" *) 
-(* SRC_INPUT_REG = "0" *) (* VERSION = "0" *) (* XPM_MODULE = "TRUE" *) 
-(* keep_hierarchy = "true" *) (* xpm_cdc = "SINGLE" *) 
+(* DEST_SYNC_FF = "4" *) (* INIT_SYNC_FF = "0" *) (* ORIG_REF_NAME = "xpm_cdc_single" *) 
+(* SIM_ASSERT_CHK = "0" *) (* SRC_INPUT_REG = "0" *) (* VERSION = "0" *) 
+(* XPM_MODULE = "TRUE" *) (* keep_hierarchy = "true" *) (* xpm_cdc = "SINGLE" *) 
 module design_1_rst_clk_wiz_1_100M_0_xpm_cdc_single
    (src_clk,
     src_in,

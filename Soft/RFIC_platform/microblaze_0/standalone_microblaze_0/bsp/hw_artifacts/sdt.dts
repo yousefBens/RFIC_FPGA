@@ -1,8 +1,8 @@
 /dts-v1/;
 / {
-        board = "cmod_a7-15t";
-        compatible = "xlnx,cmod_a7-15t";
-        device_id = "7a15t";
+        board = "cmod_a7-35t";
+        compatible = "xlnx,cmod_a7-35t";
+        device_id = "7a35t";
         #address-cells = <0x1>;
         #size-cells = <0x1>;
         family = "microblaze";
@@ -54,7 +54,7 @@
                         xlnx,dc-axi-mon = <0x0>;
                         xlnx,debug-trace-async-reset = <0x0>;
                         xlnx,trace = <0x0>;
-                        xlnx,part = "xc7a15tcpg236-1";
+                        xlnx,part = "xc7a35tcpg236-1";
                         i-cache-baseaddr = <0x0>;
                         xlnx,use-config-reset = <0x0>;
                         xlnx,pvr = <0x0>;

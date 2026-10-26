@@ -1,9 +1,9 @@
 /dts-v1/;
 #include "pl.dtsi"
 / {
-	board = "cmod_a7-15t";
-	compatible = "xlnx,cmod_a7-15t";
-	device_id = "7a15t";
+	board = "cmod_a7-35t";
+	compatible = "xlnx,cmod_a7-35t";
+	device_id = "7a35t";
 	#address-cells = <1>;
 	#size-cells = <1>;
 	family = "microblaze";

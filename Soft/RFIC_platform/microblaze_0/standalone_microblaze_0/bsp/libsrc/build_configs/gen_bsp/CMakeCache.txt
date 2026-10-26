@@ -15,7 +15,7 @@
 ########################
 
 //BOARD
-BOARD:STRING=cmod_a7-15t
+BOARD:STRING=cmod_a7-35t
 
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/tools/Xilinx/2025.1/Vitis/gnu/microblaze/lin/bin/mb-addr2line
@@ -252,7 +252,7 @@ CMAKE_TOOLCHAIN_FILE:UNINITIALIZED=/home/yousef/Vivado_workspace/RFIC_SPI/Soft/R
 CMAKE_VERBOSE_MAKEFILE:BOOL=ON
 
 //Device Id
-DEVICE_ID:STRING=7a15t
+DEVICE_ID:STRING=7a35t
 
 //The directory containing a CMake configuration file for SCUGIC.
 SCUGIC_DIR:PATH=SCUGIC_DIR-NOTFOUND

@@ -36,7 +36,7 @@
 			xlnx,dc-axi-mon = <0>;
 			xlnx,debug-trace-async-reset = <0>;
 			xlnx,trace = <0>;
-			xlnx,part = "xc7a15tcpg236-1";
+			xlnx,part = "xc7a35tcpg236-1";
 			i-cache-baseaddr = <0x0>;
 			xlnx,use-config-reset = <0>;
 			xlnx,pvr = <0>;

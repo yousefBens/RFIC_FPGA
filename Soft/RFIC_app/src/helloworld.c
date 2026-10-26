@@ -1,203 +1,635 @@
 #include "xparameters.h"
 #include "xil_io.h"
 #include "xil_printf.h"
+
 #include <stdint.h>
 #include <string.h>
 
+/* ============================================================
+ * Hardware configuration
+ * ============================================================ */
+
 #define SPI_BASEADDR XPAR_SPI_MASTER_AXI_0_BASEADDR
 
-#define REG0_CTRL   0x00
-#define REG1_TXLOW  0x04
-#define REG2_TXHIGH 0x08
-#define REG3_STAT   0x0C
-#define REG4_RXLOW  0x10
-#define REG5_RXHIGH 0x14
+#define NUM_RFIC       3
+#define UART_LINE_MAX  128
 
-#define UART_LINE_MAX 32
+/* ============================================================
+ * AXI register map
+ * ============================================================ */
 
-volatile char g_uart_line[UART_LINE_MAX];
-volatile unsigned int g_uart_idx = 0;
-volatile int g_frame_ready = 0;
-volatile int g_uart_overflow = 0;
+#define REG_CTRL       0x00
+#define REG_TX_LOW     0x04
+#define REG_TX_HIGH    0x08
+#define REG_STATUS     0x0C
+#define REG_RX_LOW     0x10
+#define REG_RX_HIGH    0x14
+#define REG_RX_COUNT   0x18
+#define REG_ACK        0x1C
 
-void uart_rx_push_char(char c)
+/* ============================================================
+ * CTRL bits
+ * ============================================================ */
+
+#define CTRL_SEND      (1u << 0)
+#define CTRL_LAST      (1u << 1)
+#define CTRL_LDB       (1u << 2)
+
+/* ============================================================
+ * STATUS bits
+ * ============================================================ */
+
+#define STATUS_SPI_BUSY  (1u << 0)
+#define STATUS_TX_READY  (1u << 1)
+#define STATUS_RX_VALID  (1u << 2)
+#define STATUS_SPI_DONE  (1u << 3)
+#define STATUS_LDB_BUSY  (1u << 4)
+#define STATUS_LDB_DONE  (1u << 5)
+#define STATUS_ERROR     (1u << 6)
+
+/* ============================================================
+ * ACK bits
+ * ============================================================ */
+
+#define ACK_RX          (1u << 0)
+#define ACK_SPI_DONE    (1u << 1)
+#define ACK_LDB_DONE    (1u << 2)
+#define ACK_ERROR       (1u << 3)
+#define ACK_RX_COUNT    (1u << 4)
+
+/* ============================================================
+ * Timeouts
+ * ============================================================ */
+
+#define SPI_TIMEOUT 10000000u
+
+/* ============================================================
+ * Data structures
+ * ============================================================ */
+
+typedef struct
 {
-    // xil_printf("[DBG] rx_char: '%c' (0x%02X)\r\n", c, c);
+    uint32_t low;
+    uint32_t high;
 
-    if (g_frame_ready) {
-        xil_printf("[DBG] frame_ready=1, caractere ignore\r\n");
-        return;
-    }
+} spi_word_t;
 
-    if (c == '\r' || c == '\n') {
-        xil_printf("[DBG] Fin de ligne detectee\r\n");
-        if (g_uart_idx > 0) {
-            g_uart_line[g_uart_idx] = '\0';
-            g_uart_idx = 0;
-            g_frame_ready = 1;
-            xil_printf("[DBG] Trame complete prete a etre parser\r\n");
-        }
-        return;
-    }
+/* ============================================================
+ * AXI access functions
+ * ============================================================ */
 
-    if (g_uart_idx < (UART_LINE_MAX - 1)) {
-        g_uart_line[g_uart_idx] = c;
-        // xil_printf("[DBG] Stocke a l'index %d\r\n", g_uart_idx);
-        g_uart_idx++;
-    } else {
-        g_uart_idx = 0;
-        g_uart_overflow = 1;
-        xil_printf("[DBG] OVERFLOW du buffer UART !\r\n");
-    }
+static inline void spi_write(uint32_t offset, uint32_t value)
+{
+    Xil_Out32(SPI_BASEADDR + offset, value);
 }
+
+static inline uint32_t spi_read(uint32_t offset)
+{
+    return Xil_In32(SPI_BASEADDR + offset);
+}
+
+/* ============================================================
+ * HEX conversion
+ * ============================================================ */
 
 static int hex_char_to_val(char c)
 {
-    if (c >= '0' && c <= '9') return (int)(c - '0');
-    if (c >= 'a' && c <= 'f') return (int)(c - 'a' + 10);
-    if (c >= 'A' && c <= 'F') return (int)(c - 'A' + 10);
+    if (c >= '0' && c <= '9')
+        return c - '0';
+
+    if (c >= 'a' && c <= 'f')
+        return c - 'a' + 10;
+
+    if (c >= 'A' && c <= 'F')
+        return c - 'A' + 10;
+
     return -1;
 }
 
-static int parse_hex_60(const char *s, uint32_t *tx_low, uint32_t *tx_high)
+/* ============================================================
+ * Parse 60-bit hexadecimal word
+ * ============================================================ */
+
+static int parse_hex_60(
+    const char *str,
+    spi_word_t *word
+)
 {
     uint64_t value = 0;
     int digits = 0;
-    int v;
 
-    *tx_low = 0;
-    *tx_high = 0;
+    while (*str == ' ' || *str == '\t')
+        str++;
 
-    while (*s == ' ' || *s == '\t') {
-        s++;
-    }
-
-    if (*s == '\0') {
+    if (*str == '\0')
         return -1;
-    }
 
-    while (*s != '\0') {
-        v = hex_char_to_val(*s);
-        if (v < 0) {
+    while (*str != '\0')
+    {
+        int v = hex_char_to_val(*str);
+
+        if (v < 0)
             return -2;
-        }
 
-        if (digits >= 15) {
+        if (digits >= 15)
             return -3;
-        }
 
         value = (value << 4) | (uint64_t)v;
+
         digits++;
-        s++;
+        str++;
     }
 
-    *tx_low  = (uint32_t)(value & 0xFFFFFFFFu);
-    *tx_high = (uint32_t)((value >> 32) & 0x0FFFFFFFu);
+    word->low = (uint32_t)(value & 0xFFFFFFFFULL);
+
+    word->high = (uint32_t)(
+        (value >> 32) & 0x0FFFFFFFULL
+    );
 
     return digits;
 }
 
-static int spi_send_frame(uint32_t tx_low, uint32_t tx_high)
+/* ============================================================
+ * UART line reception
+ * ============================================================ */
+
+static int uart_read_line(char *buffer, int max_length)
 {
-    uint32_t status;
-    uint32_t timeout;
+    int index = 0;
+    int overflow = 0;
 
-    timeout = 10000000;
-    do {
-        status = Xil_In32(SPI_BASEADDR + REG3_STAT);
-        if (--timeout == 0) {
-            xil_printf("Timeout avant start (busy reste a 1)\r\n");
-            return -1;
+    extern char inbyte(void);
+
+    while (1)
+    {
+        char c = inbyte();
+
+        if (c == '\r' || c == '\n')
+        {
+            if (index == 0 && !overflow)
+                continue;
+
+            buffer[index] = '\0';
+
+            if (overflow)
+                return -1;
+
+            return index;
         }
-    } while ((status & 0x1u) != 0u);
 
-    Xil_Out32(SPI_BASEADDR + REG1_TXLOW, tx_low);
-    Xil_Out32(SPI_BASEADDR + REG2_TXHIGH, tx_high);
-
-    Xil_Out32(SPI_BASEADDR + REG0_CTRL, 0x1);
-    Xil_Out32(SPI_BASEADDR + REG0_CTRL, 0x0);
-
-    timeout = 10000000;
-    do {
-        status = Xil_In32(SPI_BASEADDR + REG3_STAT);
-        if (--timeout == 0) {
-            xil_printf("Timeout : SPI n'a jamais demarre\r\n");
-            return -2;
+        if (index < max_length - 1 && !overflow)
+        {
+            buffer[index++] = c;
         }
-    } while ((status & 0x1u) == 0u);
+        else
+        {
+            overflow = 1;
+        }
+    }
+}
 
-    timeout = 10000000;
-    do {
-        status = Xil_In32(SPI_BASEADDR + REG3_STAT);
-        if (--timeout == 0) {
-            xil_printf("Timeout : SPI n'a jamais fini\r\n");
+/* ============================================================
+ * Parse UART command
+ *
+ * Expected:
+ * SPI:RFIC3:RFIC2:RFIC1
+ * ============================================================ */
+
+static int parse_spi_command(
+    char *line,
+    spi_word_t words[NUM_RFIC]
+)
+{
+    char *token;
+    int index = 0;
+
+    token = strtok(line, ":");
+
+    if (token == NULL)
+        return -1;
+
+    if (strcmp(token, "SPI") != 0)
+        return -2;
+
+    while (index < NUM_RFIC)
+    {
+        token = strtok(NULL, ":");
+
+        if (token == NULL)
             return -3;
-        }
-    } while ((status & 0x1u) != 0u);
+
+        if (parse_hex_60(token, &words[index]) < 0)
+            return -4;
+
+        index++;
+    }
+
+    if (strtok(NULL, ":") != NULL)
+        return -5;
 
     return 0;
 }
 
-static void spi_read_rx(uint32_t *rx_low, uint32_t *rx_high)
+/* ============================================================
+ * Wait for status bit
+ * ============================================================ */
+
+static int wait_status_set(uint32_t mask)
 {
-    *rx_low  = Xil_In32(SPI_BASEADDR + REG4_RXLOW);
-    *rx_high = Xil_In32(SPI_BASEADDR + REG5_RXHIGH) & 0x0FFFFFFFu;
+    uint32_t timeout = SPI_TIMEOUT;
+
+    while (timeout--)
+    {
+        uint32_t status = spi_read(REG_STATUS);
+
+        if (status & STATUS_ERROR)
+        {
+            xil_printf(
+                "[ERROR] AXI SPI error, STATUS=0x%08X\r\n",
+                status
+            );
+
+            return -2;
+        }
+
+        if ((status & mask) == mask)
+            return 0;
+    }
+
+    xil_printf(
+        "[ERROR] Timeout waiting for STATUS mask 0x%08X\r\n",
+        mask
+    );
+
+    return -1;
 }
+
+/* ============================================================
+ * Wait until SPI can accept a new word
+ * ============================================================ */
+
+static int wait_spi_ready(void)
+{
+    uint32_t timeout = SPI_TIMEOUT;
+
+    while (timeout--)
+    {
+        uint32_t status = spi_read(REG_STATUS);
+
+        if (status & STATUS_ERROR)
+            return -2;
+
+        if ((status & STATUS_TX_READY) &&
+            !(status & STATUS_RX_VALID) &&
+            !(status & STATUS_LDB_BUSY))
+        {
+            return 0;
+        }
+    }
+
+    return -1;
+}
+
+/* ============================================================
+ * Send one 60-bit word
+ *
+ * last = 0 : keep CSB low
+ * last = 1 : release CSB after word
+ * ============================================================ */
+
+static int spi_send_word(
+    const spi_word_t *tx,
+    spi_word_t *rx,
+    int last
+)
+{
+    uint32_t ctrl;
+    int ret;
+
+    /* Wait until SPI is ready */
+
+    ret = wait_spi_ready();
+
+    if (ret != 0)
+    {
+        xil_printf("[ERROR] SPI not ready\r\n");
+        return -1;
+    }
+
+    /* Load TX registers */
+
+    spi_write(REG_TX_LOW, tx->low);
+    spi_write(REG_TX_HIGH, tx->high);
+
+    /* Build command */
+
+    ctrl = CTRL_SEND;
+
+    if (last)
+        ctrl |= CTRL_LAST;
+
+    /* Start transmission */
+
+    spi_write(REG_CTRL, ctrl);
+
+    /* Wait for received word */
+
+    ret = wait_status_set(STATUS_RX_VALID);
+
+    if (ret != 0)
+    {
+        xil_printf("[ERROR] RX timeout\r\n");
+        return -2;
+    }
+
+    /* Read RX registers */
+
+    rx->low = spi_read(REG_RX_LOW);
+
+    rx->high = spi_read(REG_RX_HIGH) & 0x0FFFFFFF;
+
+    /* Acknowledge RX */
+
+    spi_write(REG_ACK, ACK_RX);
+
+    return 0;
+}
+
+/* ============================================================
+ * Wait for SPI transaction completion
+ * ============================================================ */
+
+static int spi_wait_done(void)
+{
+    int ret;
+
+    ret = wait_status_set(STATUS_SPI_DONE);
+
+    if (ret != 0)
+        return ret;
+
+    spi_write(REG_ACK, ACK_SPI_DONE);
+
+    return 0;
+}
+
+/* ============================================================
+ * Generate LDB pulse
+ * ============================================================ */
+
+static int ldb_apply(void)
+{
+    int ret;
+
+    xil_printf("[LDB] Trigger\r\n");
+
+    /* Clear previous LDB DONE event */
+
+    spi_write(REG_ACK, ACK_LDB_DONE);
+
+    /* SPI must be completely idle */
+
+    {
+        uint32_t timeout = SPI_TIMEOUT;
+
+        while (timeout--)
+        {
+            uint32_t status = spi_read(REG_STATUS);
+
+            if (status & STATUS_ERROR)
+                return -2;
+
+            if (!(status & STATUS_SPI_BUSY) &&
+                !(status & STATUS_LDB_BUSY) &&
+                (status & STATUS_TX_READY))
+            {
+                break;
+            }
+        }
+
+        if (timeout == 0)
+        {
+            xil_printf("[ERROR] SPI busy before LDB\r\n");
+            return -1;
+        }
+    }
+
+    /* Trigger LDB controller */
+
+    spi_write(REG_CTRL, CTRL_LDB);
+
+    /* Wait for LDB pulse completion */
+
+    ret = wait_status_set(STATUS_LDB_DONE);
+
+    if (ret != 0)
+    {
+        xil_printf("[ERROR] LDB timeout\r\n");
+        return -3;
+    }
+
+    /* Acknowledge LDB completion */
+
+    spi_write(REG_ACK, ACK_LDB_DONE);
+
+    xil_printf("[LDB] DONE\r\n");
+
+    return 0;
+}
+
+/* ============================================================
+ * Print 60-bit word
+ * ============================================================ */
+
+static void print_spi_word(
+    const char *label,
+    const spi_word_t *word
+)
+{
+    xil_printf(
+        "%s HIGH=0x%08X LOW=0x%08X\r\n",
+        label,
+        word->high,
+        word->low
+    );
+}
+
+/* ============================================================
+ * Send configuration to three RFIC
+ * ============================================================ */
+
+static int configure_rfic_chain(
+    spi_word_t tx_words[NUM_RFIC]
+)
+{
+    spi_word_t rx_words[NUM_RFIC];
+
+    int ret;
+    int i;
+
+    xil_printf("\r\n");
+    xil_printf("====================================\r\n");
+    xil_printf("  SPI DAISY CHAIN - %d RFIC\r\n", NUM_RFIC);
+    xil_printf("====================================\r\n");
+
+    /* Clear previous events */
+
+    spi_write(
+        REG_ACK,
+        ACK_RX |
+        ACK_SPI_DONE |
+        ACK_LDB_DONE |
+        ACK_ERROR |
+        ACK_RX_COUNT
+    );
+
+    /* Send words: RFIC3, RFIC2, RFIC1 */
+
+    for (i = 0; i < NUM_RFIC; i++)
+    {
+        int rfic_number = NUM_RFIC - i;
+
+        int last = (i == NUM_RFIC - 1);
+
+        xil_printf(
+            "\r\n[SPI] Sending RFIC %d\r\n",
+            rfic_number
+        );
+
+        print_spi_word("TX", &tx_words[i]);
+
+        ret = spi_send_word(
+            &tx_words[i],
+            &rx_words[i],
+            last
+        );
+
+        if (ret != 0)
+        {
+            xil_printf(
+                "[ERROR] RFIC %d transmission failed\r\n",
+                rfic_number
+            );
+
+            return -1;
+        }
+
+        print_spi_word("RX", &rx_words[i]);
+    }
+
+    /* Wait for CSB release */
+
+    xil_printf("\r\n[SPI] Waiting for transaction DONE\r\n");
+
+    ret = spi_wait_done();
+
+    if (ret != 0)
+    {
+        xil_printf("[ERROR] SPI transaction timeout\r\n");
+        return -2;
+    }
+
+    xil_printf("[SPI] 180 bits transmitted\r\n");
+    xil_printf("[SPI] CSB released\r\n");
+
+    /* Apply all configurations simultaneously */
+
+    ret = ldb_apply();
+
+    if (ret != 0)
+    {
+        xil_printf("[ERROR] LDB operation failed\r\n");
+        return -3;
+    }
+
+    xil_printf("\r\n");
+    xil_printf("====================================\r\n");
+    xil_printf("  CONFIGURATION COMPLETED\r\n");
+    xil_printf("====================================\r\n");
+
+    return 0;
+}
+
+/* ============================================================
+ * MAIN
+ * ============================================================ */
 
 int main(void)
 {
-    uint32_t tx_low, tx_high;
-    uint32_t rx_low, rx_high;
+    char uart_line[UART_LINE_MAX];
+
+    spi_word_t tx_words[NUM_RFIC];
+
     int ret;
-    int spi_ret;
 
     xil_printf("\r\n");
-    xil_printf("=== UART -> SPI READY ===\r\n");
-    xil_printf("Envoyer une trame HEX puis Enter\r\n");
-    xil_printf("Max = 15 digits hex (60 bits)\r\n");
+    xil_printf("====================================\r\n");
+    xil_printf("       RFIC SPI CONTROLLER\r\n");
+    xil_printf("====================================\r\n");
+
+    xil_printf("MicroBlaze + AXI SPI + LDB\r\n");
+    xil_printf("Number of RFIC : %d\r\n", NUM_RFIC);
+    xil_printf("SPI word size  : 60 bits\r\n");
+    xil_printf("Total SPI bits : %d\r\n", NUM_RFIC * 60);
+
     xil_printf("\r\n");
+    xil_printf("UART command format:\r\n");
+    xil_printf("SPI:RFIC3:RFIC2:RFIC1\r\n");
 
-    extern char inbyte(void);
+    xil_printf("\r\nExample:\r\n");
+    xil_printf(
+        "SPI:123456789ABCDEF:23456789ABCDEF0:3456789ABCDEF01\r\n"
+    );
 
-    while (1) {
-        char c = inbyte();
-        uart_rx_push_char(c);
+    xil_printf("\r\nREADY\r\n");
 
-        if (g_uart_overflow) {
-            g_uart_overflow = 0;
-            xil_printf("Erreur : overflow buffer UART\r\n");
+    while (1)
+    {
+        xil_printf("\r\n> ");
+
+        ret = uart_read_line(
+            uart_line,
+            UART_LINE_MAX
+        );
+
+        if (ret < 0)
+        {
+            xil_printf("[ERROR] UART buffer overflow\r\n");
+            continue;
         }
 
-        if (g_frame_ready) {
-            char local_line[UART_LINE_MAX];
+        xil_printf(
+            "\r\n[UART] Received: %s\r\n",
+            uart_line
+        );
 
-            strcpy(local_line, (const char *)g_uart_line);
-            g_frame_ready = 0;
+        ret = parse_spi_command(
+            uart_line,
+            tx_words
+        );
 
-            ret = parse_hex_60(local_line, &tx_low, &tx_high);
+        if (ret != 0)
+        {
+            xil_printf(
+                "[ERROR] Invalid UART command (%d)\r\n",
+                ret
+            );
 
-            if (ret < 0) {
-                xil_printf("Trame invalide : %s\r\n", local_line);
-                xil_printf("Utiliser uniquement HEX, max 15 digits\r\n");
-                continue;
-            }
+            xil_printf(
+                "Expected: SPI:RFIC3:RFIC2:RFIC1\r\n"
+            );
 
-            xil_printf("Trame recue : %s\r\n", local_line);
-            xil_printf("TX_HIGH = 0x%08X\r\n", tx_high);
-            xil_printf("TX_LOW  = 0x%08X\r\n", tx_low);
+            continue;
+        }
 
-            spi_ret = spi_send_frame(tx_low, tx_high);
-            if (spi_ret != 0) {
-                xil_printf("Erreur SPI send = %d\r\n\r\n", spi_ret);
-                continue;
-            }
+        ret = configure_rfic_chain(tx_words);
 
-            spi_read_rx(&rx_low, &rx_high);
-
-            xil_printf("SPI DONE\r\n");
-            xil_printf("RX_HIGH = 0x%08X\r\n", rx_high);
-            xil_printf("RX_LOW  = 0x%08X\r\n", rx_low);
-            xil_printf("\r\n");
+        if (ret != 0)
+        {
+            xil_printf(
+                "[ERROR] Configuration failed (%d)\r\n",
+                ret
+            );
         }
     }
 

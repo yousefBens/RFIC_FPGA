@@ -1,71 +1,72 @@
 {
    "ActiveEmotionalView":"Default View",
-   "Default View_ScaleFactor":"0.824055",
-   "Default View_TopLeft":"1385,205",
+   "Default View_ScaleFactor":"0.59771",
+   "Default View_TopLeft":"770,37",
    "ExpandedHierarchyInLayout":"",
    "guistr":"# # String gsaved with Nlview 7.8.0 2024-04-26 e1825d835c VDI=44 GEI=38 GUI=JA:21.0 TLS
 #  -string -flagsOSRD
-preplace port usb_uart -pg 1 -lvl 10 -x 2630 -y 160 -defaultsOSRD
-preplace port port-id_rst -pg 1 -lvl 0 -x -100 -y 230 -defaultsOSRD
-preplace port port-id_Clk -pg 1 -lvl 0 -x -100 -y 310 -defaultsOSRD
-preplace port port-id_uart_txd_in -pg 1 -lvl 0 -x -100 -y 510 -defaultsOSRD
-preplace port port-id_uart_rxd_out -pg 1 -lvl 10 -x 2630 -y 200 -defaultsOSRD
-preplace port port-id_mosi -pg 1 -lvl 10 -x 2630 -y 550 -defaultsOSRD
-preplace port port-id_sclk -pg 1 -lvl 10 -x 2630 -y 580 -defaultsOSRD
-preplace port port-id_ss_n -pg 1 -lvl 10 -x 2630 -y 610 -defaultsOSRD
-preplace port port-id_miso -pg 1 -lvl 0 -x -100 -y 630 -defaultsOSRD
-preplace port port-id_led1 -pg 1 -lvl 10 -x 2630 -y 640 -defaultsOSRD
-preplace port port-id_btn -pg 1 -lvl 0 -x -100 -y 600 -defaultsOSRD
-preplace port port-id_test_sclk -pg 1 -lvl 10 -x 2630 -y 790 -defaultsOSRD
-preplace port port-id_spi_ldb -pg 1 -lvl 10 -x 2630 -y 710 -defaultsOSRD
-preplace inst microblaze_0 -pg 1 -lvl 4 -x 1110 -y 390 -defaultsOSRD
-preplace inst microblaze_0_local_memory -pg 1 -lvl 7 -x 1950 -y 400 -defaultsOSRD
-preplace inst microblaze_0_axi_periph -pg 1 -lvl 7 -x 1950 -y 170 -defaultsOSRD
-preplace inst microblaze_0_axi_intc -pg 1 -lvl 3 -x 750 -y 360 -defaultsOSRD
-preplace inst mdm_1 -pg 1 -lvl 3 -x 750 -y 180 -defaultsOSRD
-preplace inst rst_clk_wiz_1_100M -pg 1 -lvl 2 -x 400 -y 270 -defaultsOSRD
-preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 50 -y 300 -defaultsOSRD
-preplace inst axi_uartlite_0 -pg 1 -lvl 9 -x 2490 -y 190 -defaultsOSRD
-preplace inst Btn_led_0 -pg 1 -lvl 5 -x 1460 -y 590 -defaultsOSRD
-preplace inst xlconcat_0 -pg 1 -lvl 2 -x 400 -y 420 -defaultsOSRD
-preplace inst SPI_Master_AXI_0 -pg 1 -lvl 6 -x 1680 -y 680 -defaultsOSRD
-preplace inst Signal_Freq_test_0 -pg 1 -lvl 8 -x 2250 -y 790 -defaultsOSRD
-preplace netloc Btn_led_0_sig 1 5 5 NJ 590 1800 640 NJ 640 N 640 N
-preplace netloc SPI_Master_AXI_0_mosi 1 6 4 1790J 550 NJ 550 N 550 N
-preplace netloc SPI_Master_AXI_0_sclk 1 6 4 NJ 670 2130J 580 N 580 N
-preplace netloc SPI_Master_AXI_0_ss_n 1 6 4 1800 650 NJ 650 N 650 2600J
-preplace netloc Signal_Freq_test_0_out_signal 1 8 2 NJ 790 N
-preplace netloc axi_uartlite_0_interrupt 1 1 9 220 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 NJ 490 N 490 2600
-preplace netloc axi_uartlite_0_tx 1 9 1 NJ 200
-preplace netloc btn_1 1 0 5 NJ 600 NJ 600 NJ 600 NJ 600 1340
-preplace netloc clk_wiz_0_locked 1 1 1 N 310
-preplace netloc mdm_1_debug_sys_rst 1 1 3 220 110 NJ 110 870
-preplace netloc microblaze_0_Clk 1 1 8 210 500 590 480 870 480 1380 500 1560 410 1800 10 2120J 190 N
-preplace netloc miso_1 1 0 6 -70J 670 NJ 670 NJ 670 NJ 670 NJ 670 N
-preplace netloc reset_1 1 0 2 -40 230 140
-preplace netloc rst_clk_wiz_1_100M_bus_struct_reset 1 2 5 600J 500 NJ 500 1370 430 N 430 N
-preplace netloc rst_clk_wiz_1_100M_mb_reset 1 2 2 620 470 880J
-preplace netloc rst_clk_wiz_1_100M_peripheral_aresetn 1 2 7 580 510 NJ 510 N 510 1550 270 1790 -20 N -20 2370
-preplace netloc rst_clk_wiz_1_100M_peripheral_reset 1 2 6 610J 250 NJ 250 1360 790 N 790 N 790 N
+preplace port usb_uart -pg 1 -lvl 11 -x 2870 -y 160 -defaultsOSRD
+preplace port port-id_rst -pg 1 -lvl 0 -x 0 -y 230 -defaultsOSRD
+preplace port port-id_Clk -pg 1 -lvl 0 -x 0 -y 310 -defaultsOSRD
+preplace port port-id_uart_txd_in -pg 1 -lvl 0 -x 0 -y 510 -defaultsOSRD
+preplace port port-id_uart_rxd_out -pg 1 -lvl 11 -x 2870 -y 200 -defaultsOSRD
+preplace port port-id_mosi -pg 1 -lvl 11 -x 2870 -y 550 -defaultsOSRD
+preplace port port-id_sclk -pg 1 -lvl 11 -x 2870 -y 580 -defaultsOSRD
+preplace port port-id_ss_n -pg 1 -lvl 11 -x 2870 -y 610 -defaultsOSRD
+preplace port port-id_miso -pg 1 -lvl 0 -x 0 -y 630 -defaultsOSRD
+preplace port port-id_led1 -pg 1 -lvl 11 -x 2870 -y 640 -defaultsOSRD
+preplace port port-id_btn -pg 1 -lvl 0 -x 0 -y 600 -defaultsOSRD
+preplace port port-id_test_sclk -pg 1 -lvl 11 -x 2870 -y 790 -defaultsOSRD
+preplace port port-id_spi_ldb -pg 1 -lvl 11 -x 2870 -y 710 -defaultsOSRD
+preplace inst microblaze_0 -pg 1 -lvl 4 -x 1140 -y 390 -defaultsOSRD
+preplace inst microblaze_0_local_memory -pg 1 -lvl 7 -x 1980 -y 400 -defaultsOSRD
+preplace inst microblaze_0_axi_periph -pg 1 -lvl 7 -x 1980 -y 170 -defaultsOSRD
+preplace inst microblaze_0_axi_intc -pg 1 -lvl 3 -x 780 -y 360 -defaultsOSRD
+preplace inst mdm_1 -pg 1 -lvl 3 -x 780 -y 180 -defaultsOSRD
+preplace inst rst_clk_wiz_1_100M -pg 1 -lvl 2 -x 410 -y 260 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 120 -y 300 -defaultsOSRD
+preplace inst axi_uartlite_0 -pg 1 -lvl 9 -x 2510 -y 190 -defaultsOSRD
+preplace inst Btn_led_0 -pg 1 -lvl 5 -x 1480 -y 590 -defaultsOSRD
+preplace inst Signal_Freq_test_0 -pg 1 -lvl 8 -x 2280 -y 790 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 10 -x 2720 -y 0 -defaultsOSRD
+preplace inst xlconcat_1 -pg 1 -lvl 2 -x 410 -y 450 -defaultsOSRD
+preplace inst SPI_Master_AXI_0 -pg 1 -lvl 6 -x 1700 -y 650 -defaultsOSRD
+preplace netloc Btn_led_0_sig 1 5 6 1570J 560 N 560 NJ 560 N 560 N 560 2830
+preplace netloc Signal_Freq_test_0_out_signal 1 8 3 NJ 790 N 790 N
+preplace netloc axi_uartlite_0_tx 1 9 2 NJ 200 N
+preplace netloc btn_1 1 0 5 NJ 600 NJ 600 NJ 600 NJ 600 1370
+preplace netloc clk_wiz_0_locked 1 1 1 230 300n
+preplace netloc mdm_1_debug_sys_rst 1 1 3 230 110 NJ 110 900
+preplace netloc microblaze_0_Clk 1 1 8 220 360 660 490 900 490 1400 490 1580 410 1830 10 2150J 190 N
+preplace netloc reset_1 1 0 2 30 230 210
+preplace netloc rst_clk_wiz_1_100M_bus_struct_reset 1 2 5 630J 500 NJ 500 1390 430 N 430 N
+preplace netloc rst_clk_wiz_1_100M_mb_reset 1 2 2 650 470 910J
+preplace netloc rst_clk_wiz_1_100M_peripheral_aresetn 1 2 7 610 510 NJ 510 N 510 1560 270 1820 -20 N -20 2400
+preplace netloc rst_clk_wiz_1_100M_peripheral_reset 1 2 6 590J 250 NJ 250 1380 790 N 790 N 790 N
 preplace netloc sys_clock_1 1 0 1 NJ 310
-preplace netloc uart_txd_in_1 1 0 10 -80J 0 NJ 0 NJ 0 NJ 0 NJ 0 N 0 N 0 NJ 0 N 0 2600
-preplace netloc xlconcat_0_dout 1 2 1 610 370n
-preplace netloc SPI_Master_AXI_0_ldb 1 6 4 NJ 710 NJ 710 NJ 710 NJ
-preplace netloc axi_uartlite_0_UART 1 9 1 NJ 160
-preplace netloc microblaze_0_axi_dp 1 4 3 1340 70 N 70 N
+preplace netloc uart_txd_in_1 1 0 10 20J 0 NJ 0 NJ 0 NJ 0 NJ 0 N 0 N 0 NJ 0 N 0 2620
+preplace netloc SPI_Master_AXI_0_sclk 1 6 5 1810 670 2160 630 N 630 N 630 2840
+preplace netloc xlconcat_1_dout 1 2 1 640 370n
+preplace netloc axi_uartlite_0_interrupt 1 1 9 230 380 620J 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 NJ 480 2620
+preplace netloc SPI_Master_AXI_0_mosi 1 6 5 NJ 620 NJ 620 NJ 620 NJ 620 2820
+preplace netloc SPI_Master_AXI_0_ss_n 1 6 5 NJ 660 NJ 660 NJ 660 NJ 660 2850
+preplace netloc SPI_Master_AXI_0_ldb 1 6 5 1820 710 NJ 710 NJ 710 NJ 710 NJ
+preplace netloc miso_1 1 0 6 30J 670 NJ 670 NJ 670 NJ 670 NJ 670 1590
+preplace netloc axi_uartlite_0_UART 1 9 2 NJ 160 N
+preplace netloc microblaze_0_axi_dp 1 4 3 1390 70 N 70 N
 preplace netloc microblaze_0_axi_periph_M01_AXI 1 7 2 N 170 N
-preplace netloc microblaze_0_axi_periph_M02_AXI 1 5 3 1570 -10 NJ -10 2100
-preplace netloc microblaze_0_debug 1 3 1 880 170n
+preplace netloc microblaze_0_debug 1 3 1 910 170n
 preplace netloc microblaze_0_dlmb_1 1 4 3 N 370 N 370 N
 preplace netloc microblaze_0_ilmb_1 1 4 3 N 390 N 390 N
-preplace netloc microblaze_0_intc_axi 1 2 6 630 -30 NJ -30 NJ -30 N -30 N -30 2110
+preplace netloc microblaze_0_intc_axi 1 2 6 660 -30 NJ -30 NJ -30 N -30 N -30 2140
 preplace netloc microblaze_0_interrupt 1 3 1 N 360
-levelinfo -pg 1 -100 50 400 750 1110 1460 1680 1950 2250 2490 2630
-pagesize -pg 1 -db -bbox -sgen -230 -80 2920 1120
+preplace netloc microblaze_0_axi_periph_M02_AXI 1 5 3 1590 -10 NJ -10 2130
+levelinfo -pg 1 0 120 410 780 1140 1480 1700 1980 2280 2510 2720 2870
+pagesize -pg 1 -db -bbox -sgen -230 -80 3010 1120
 "
 }
 {
-   "da_axi4_cnt":"16",
+   "da_axi4_cnt":"20",
    "da_board_cnt":"6",
    "da_clkrst_cnt":"2",
    "da_mb_cnt":"2"
