@@ -14,3 +14,7 @@ status = platform.build()
 comp = client.get_component(name="RFIC_app")
 comp.build()
 
+status = platform.build()
+
+comp.build()
+

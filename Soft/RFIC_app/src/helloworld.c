@@ -12,7 +12,7 @@
 #define SPI_BASEADDR XPAR_SPI_MASTER_AXI_0_BASEADDR
 
 #define NUM_RFIC       3
-#define UART_LINE_MAX  128
+#define UART_LINE_MAX  256
 
 /* ============================================================
  * AXI register map
@@ -529,7 +529,10 @@ static int configure_rfic_chain(
         return -2;
     }
 
-    xil_printf("[SPI] 180 bits transmitted\r\n");
+    xil_printf(
+        "[SPI] %d bits transmitted\r\n",
+        NUM_RFIC * 60
+    );
     xil_printf("[SPI] CSB released\r\n");
 
     /* Apply all configurations simultaneously */
