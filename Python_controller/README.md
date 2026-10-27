@@ -1,30 +1,103 @@
-# AWMF-0197/0198 — Génération de registres et trames SPI
+# XLIM RFIC — Python Control
 
-## Fichiers
-- `rfic_config.json` : trois RFIC, huit voies chacun, paramètres individuels.
-- `rfic_calculator.py` : validation des paramètres, BW0/BW1, MODE, trames série 60 bits, décodage brut de télémétrie.
-- `main.py` : génération et affichage des trames daisy chain, UART optionnel.
-- `test_rfic.py` : tests unitaires.
+Ce programme Python permet de piloter les RFIC **Anokiwave AWMF-0197/0198** à travers une interface UART.
 
-## Utilisation
+**Architecture :** Python → UART → MicroBlaze (FPGA) → SPI Master → RFIC.
+
+Chaque RFIC utilise une trame SPI de **60 bits** (12 bits d'adresse + 48 bits de données).
+
+## 1. Configuration
+
+Modifier le fichier `rfic_config.json` :
+
+- `num_rfics` : nombre de RFIC dans la Daisy Chain.
+- `rfics` : configuration de chaque RFIC.
+- `phase_deg` : déphasage de chaque canal (degrés).
+- `att_db` : atténuation de chaque canal (dB).
+- `enabled` : activation ou désactivation du canal.
+
+**Important :** le nombre de RFIC doit également correspondre à la configuration du firmware MicroBlaze dans Vitis.
+
+## 2. Commandes
+
+### Initialisation des RFIC
+
 ```bash
-python3 main.py
-python3 main.py --include-mode
-python3 -m unittest -v test_rfic.py
-pip install pyserial
-python3 main.py --send --confirm-hardware --port /dev/ttyUSB1
+python3 main.py init --send --port /dev/ttyUSB1
 ```
 
-**Par défaut, aucune donnée n'est envoyée au FPGA.**
+Envoie les **20 trames SPI d'initialisation**, comprenant les registres MODE, BW0, BW1, les paramètres internes, la calibration et la séquence d'allumage.
 
-## Conditions matérielles importantes
-1. Les chaînes SPI série classiques sont composées de **60 bits par RFIC**. Trois RFIC = 180 bits avec **CSB maintenu actif** pendant les 180 bits. Un SPI Master configuré sur `DATA_LENGTH=60` ne convient pas sans mécanisme de flux continu.
-2. `--send` suppose que le firmware UART du FPGA accepte une ligne ASCII hexadécimale de 45 caractères et la convertit en une transaction SPI continue. **Ce protocole n'est pas confirmé par les fichiers fournis**. L'option `--confirm-hardware` est une confirmation de l'utilisateur, pas une vérification automatique.
-3. `ldb_enabled=true` positionne `MODE[12]`, mais **le code Python ne génère pas de pulse LDB**. Il faut que le FPGA gère LDB et sa synchronisation.
-4. `--include-mode` utilise `base_mode_hex` du JSON. Cette valeur historique n'est pas une configuration constructeur universelle. Elle peut activer/désactiver des fonctions RF.
-5. `--legacy-init` affiche les mots d'initialisation historiques fournis par l'utilisateur. Plusieurs adresses sont réservées dans le guide SPI ; **ne pas envoyer sans validation constructeur**.
-6. La lecture température nécessite le retour SDO brut de la transaction complète, l'alignement des données pour chaque RFIC et un protocole UART de retour. La fonction `decode_telemetry_payload` décode seulement un mot de télémétrie de 48 bits **déjà correctement extrait**. Le code de température est un **code brut 6 bits**, pas des °C. Aucun facteur de conversion n'est inventé.
-7. Le guide donne les champs de BW0 et BW1, mais une initialisation électrique complète (alimentation, calibrations, timing, mode TX/RX) doit être validée séparément.
+À exécuter au démarrage du RFIC.
 
-## Documentation
-Guide SPI AWMF-0197/0198, révision 4 : MODE=0x000, BW0=0x001, BW1=0x002, TEL_PDET_TEMP=0x015, RADDR=0x03D.
+### Configuration du beamforming
+
+```bash
+python3 main.py configure --send --port /dev/ttyUSB1
+```
+
+Calcule et envoie les registres **BW0 et BW1** à partir du fichier JSON.
+
+- **BW0** : atténuation et activation des canaux.
+- **BW1** : déphasage des canaux.
+
+### Configuration avec MODE
+
+```bash
+python3 main.py configure --include-mode --send --port /dev/ttyUSB1
+```
+
+Envoie les registres **MODE + BW0 + BW1**.
+
+### Lecture de la télémétrie
+
+```bash
+python3 main.py temperature --send --port /dev/ttyUSB1
+```
+
+Envoie la trame SPI `011000000000000` (adresse `0x011`) utilisée pour la demande de télémétrie.
+
+Affiche les **60 bits reçus sur SDO**. La conversion en température (°C) n'est pas encore implémentée.
+
+## 3. Options
+
+| Option | Description |
+|---|---|
+| `--send` | Transmettre les trames au FPGA |
+| `--port` | Sélectionner le port UART |
+| `--include-mode` | Ajouter le registre MODE à la configuration |
+
+Sans `--send`, les trames sont générées et affichées sans transmission au FPGA.
+
+## 4. Ordre d'utilisation recommandé
+
+**1. Initialiser :**
+```bash
+python3 main.py init --send --port /dev/ttyUSB1
+```
+
+**2. Appliquer le beamforming :**
+```bash
+python3 main.py configure --send --port /dev/ttyUSB1
+```
+
+**3. Lire la télémétrie :**
+```bash
+python3 main.py temperature --send --port /dev/ttyUSB1
+```
+
+## 5. Résultats
+
+Les résultats sont enregistrés dans :
+
+```text
+spi_results.json
+```
+
+Les données affichées comprennent :
+- **TX** : trame SPI transmise.
+- **RX** : trame SPI reçue depuis SDO.
+- **SPI_DONE** : fin de transmission.
+- **LDB_DONE** : fin de l'impulsion LDB.
+
+**Note :** les transactions SPI sont effectuées par le FPGA. Leur exécution ne garantit pas à elle seule que le RFIC a correctement appliqué la configuration.
