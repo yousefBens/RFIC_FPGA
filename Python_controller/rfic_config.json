@@ -1,0 +1,17 @@
+{
+  "num_rfics": 1,
+  "ldb_enabled": true,
+  "base_mode_hex": "000000020400",
+  "rfics": [
+    {"id": 1, "description": "RFIC 1 - Closest to FPGA", "config": {
+      "1a": {"phase_deg": 45.0, "att_db": 1.0, "enabled": true},
+      "1b": {"phase_deg": 45.0, "att_db": 1.0, "enabled": true},
+      "2a": {"phase_deg": 90.0, "att_db": 0.0, "enabled": true},
+      "2b": {"phase_deg": 90.0, "att_db": 0.0, "enabled": true},
+      "3a": {"phase_deg": 0.0, "att_db": 7.5, "enabled": false},
+      "3b": {"phase_deg": 0.0, "att_db": 7.5, "enabled": false},
+      "4a": {"phase_deg": 180.0, "att_db": 2.5, "enabled": true},
+      "4b": {"phase_deg": 180.0, "att_db": 2.5, "enabled": true}
+    }}
+  ]
+}

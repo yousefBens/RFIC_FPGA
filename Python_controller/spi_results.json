@@ -1,0 +1,39 @@
+{
+  "transactions": [
+    {
+      "register": "TELEMETRY_0x011",
+      "success": true,
+      "error": null,
+      "tx_words": [
+        "011000000000000"
+      ],
+      "rx_words": [
+        "000400000000015"
+      ],
+      "uart_log": [
+        "[UART] Received: SPI:011000000000000",
+        "====================================",
+        "SPI DAISY CHAIN - 1 RFIC",
+        "====================================",
+        "[SPI] Sending RFIC 1",
+        "TX HIGH=0x00110000 LOW=0x00000000",
+        "RX HIGH=0x00004000 LOW=0x00000015",
+        "[SPI] Waiting for transaction DONE",
+        "[SPI] 60 bits transmitted",
+        "[SPI] CSB released",
+        "[LDB] Trigger",
+        "[LDB] DONE",
+        "====================================",
+        "CONFIGURATION COMPLETED"
+      ]
+    }
+  ],
+  "telemetry_raw": [
+    {
+      "rfic_id": 1,
+      "rx60_hex": "000400000000015",
+      "payload48_hex": "000400000000"
+    }
+  ],
+  "warning": "Lecture brute uniquement. Position et validité du champ température à confirmer dans le protocole SPI."
+}

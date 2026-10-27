@@ -1,0 +1,19 @@
+1. Initialiser les RFIC (MODE)
+
+python3 main.py configure --include-mode --send --port /dev/ttyUSB1
+
+Cette commande envoie MODE + BW0 + BW1, donc elle initialise et configure les RFIC.
+
+
+2. Configurer les RFIC (BW0 + BW1 uniquement)
+
+python3 main.py configure --send --port /dev/ttyUSB1
+
+Elle applique les phases et atténuations définies dans rfic_config.json.
+
+
+3. Lire la température des RFIC
+
+python3 main.py temperature --send --port /dev/ttyUSB1
+
+Elle lance la procédure de lecture et récupère les données RX pour chaque RFIC. Le décodage de température reste à valider sur le matériel réel.

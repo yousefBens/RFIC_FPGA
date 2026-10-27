@@ -10,6 +10,7 @@
 *.sim/
 *.ip_user_files/
 *.hw/
+*env/
 
 # NE PAS ignorer .gen complètement (important pour BD)
 # *.gen/ 
