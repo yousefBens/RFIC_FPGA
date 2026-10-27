@@ -11,7 +11,7 @@
 
 #define SPI_BASEADDR XPAR_SPI_MASTER_AXI_0_BASEADDR
 
-#define NUM_RFIC       3
+#define NUM_RFIC       1
 #define UART_LINE_MAX  256
 
 /* ============================================================
